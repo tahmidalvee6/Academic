@@ -1,0 +1,239 @@
+erDiagram
+    %% CENTRAL ADMIN PANEL
+    Admin_Main {
+        INT admin_id PK
+        VARCHAR name
+        VARCHAR email
+        VARCHAR password
+        ENUM role
+        VARCHAR contact_no
+    }
+    ServiceLogs {
+        INT log_id PK
+        INT admin_id FK
+        VARCHAR module
+        VARCHAR action
+        TEXT description
+        DATETIME log_time
+    }
+    Notifications {
+        INT notification_id PK
+        INT admin_id FK
+        INT citizen_id FK
+        TEXT message
+        DATETIME date_sent
+    }
+    Reports {
+        INT report_id PK
+        INT admin_id FK
+        VARCHAR module
+        VARCHAR report_type
+        DATETIME created_at
+    }
+
+    Admin_Main ||--o{ ServiceLogs : manages
+    Admin_Main ||--o{ Notifications : sends
+    Admin_Main ||--o{ Reports : generates
+
+    %% CITIZEN MODULE
+    Citizen {
+        INT citizen_id PK
+        VARCHAR name
+        INT age
+        VARCHAR gender
+        VARCHAR address
+        VARCHAR contact_no
+        VARCHAR email
+        VARCHAR password
+    }
+    Complaints {
+        INT complaint_id PK
+        INT citizen_id FK
+        VARCHAR service_type
+        TEXT description
+        VARCHAR status
+        DATETIME date_created
+    }
+    Feedback {
+        INT feedback_id PK
+        INT citizen_id FK
+        VARCHAR service_type
+        TEXT message
+        DATETIME date
+    }
+    Payments {
+        INT payment_id PK
+        INT citizen_id FK
+        VARCHAR service_type
+        DECIMAL amount
+        DATETIME payment_date
+        VARCHAR payment_status
+    }
+
+    Citizen ||--o{ Complaints : lodges
+    Citizen ||--o{ Feedback : gives
+    Citizen ||--o{ Payments : makes
+    Notifications ||--o{ Citizen : receives
+
+    %% TRAFFIC MANAGEMENT
+    Admin_Traffic {
+        INT admin_id PK
+        VARCHAR name
+        VARCHAR email
+        VARCHAR password
+        VARCHAR access_level
+    }
+    Vehicles {
+        INT vehicle_id PK
+        INT citizen_id FK
+        VARCHAR registration_no
+        VARCHAR type
+    }
+    Violations {
+        INT violation_id PK
+        INT vehicle_id FK
+        VARCHAR type
+        DECIMAL fine_amount
+        VARCHAR status
+    }
+    Traffic_Fines {
+        INT fine_id PK
+        INT violation_id FK
+        DECIMAL amount
+        VARCHAR payment_status
+        DATETIME payment_date
+    }
+
+    Citizen ||--o{ Vehicles : owns
+    Vehicles ||--o{ Violations : has
+    Violations ||--o{ Traffic_Fines : generates
+
+    %% WASTE MANAGEMENT
+    Admin_Waste {
+        INT admin_id PK
+        VARCHAR name
+        VARCHAR email
+        VARCHAR password
+        VARCHAR access_level
+    }
+    Zones {
+        INT zone_id PK
+        VARCHAR name
+        INT population
+        VARCHAR cleanliness_level
+    }
+    CollectionVehicles {
+        INT vehicle_id PK
+        VARCHAR driver_name
+        VARCHAR vehicle_no
+        INT zone_id FK
+    }
+    CollectionSchedule {
+        INT schedule_id PK
+        INT zone_id FK
+        VARCHAR collection_day
+        TIME time
+    }
+
+    Zones ||--o{ CollectionVehicles : assigned_to
+    Zones ||--o{ CollectionSchedule : scheduled_for
+
+    %% HEALTH MANAGEMENT
+    Admin_Health {
+        INT admin_id PK
+        VARCHAR name
+        VARCHAR email
+        VARCHAR password
+        VARCHAR access_level
+    }
+    Hospitals {
+        INT hospital_id PK
+        VARCHAR name
+        VARCHAR location
+        INT capacity
+        VARCHAR contact_no
+    }
+    Doctors {
+        INT doctor_id PK
+        VARCHAR name
+        VARCHAR specialization
+        INT hospital_id FK
+    }
+    Patients {
+        INT patient_id PK
+        INT citizen_id FK
+        INT doctor_id FK
+        VARCHAR disease
+        DATE admission_date
+        VARCHAR status
+    }
+
+    Hospitals ||--o{ Doctors : employs
+    Doctors ||--o{ Patients : treats
+    Citizen ||--o{ Patients : is_patient
+
+    %% ENERGY MANAGEMENT
+    Admin_Energy {
+        INT admin_id PK
+        VARCHAR name
+        VARCHAR email
+        VARCHAR password
+        VARCHAR access_level
+    }
+    EnergyAccount {
+        INT account_id PK
+        INT citizen_id FK
+        VARCHAR meter_no
+        VARCHAR connection_type
+    }
+    EnergyUsage {
+        INT usage_id PK
+        INT account_id FK
+        VARCHAR month
+        DECIMAL units_consumed
+    }
+    EnergyBill {
+        INT bill_id PK
+        INT usage_id FK
+        DECIMAL amount
+        DATE due_date
+        VARCHAR payment_status
+    }
+
+    Citizen ||--o{ EnergyAccount : owns
+    EnergyAccount ||--o{ EnergyUsage : records
+    EnergyUsage ||--o{ EnergyBill : generates
+
+    %% HOUSING & INFRASTRUCTURE
+    Admin_Housing {
+        INT admin_id PK
+        VARCHAR name
+        VARCHAR email
+        VARCHAR password
+        VARCHAR access_level
+    }
+    Buildings {
+        INT building_id PK
+        VARCHAR name
+        VARCHAR location
+        VARCHAR type
+        INT total_floors
+    }
+    Apartments {
+        INT apartment_id PK
+        INT building_id FK
+        VARCHAR apartment_no
+        DECIMAL size_sqft
+        DECIMAL rent
+    }
+    Residents {
+        INT resident_id PK
+        INT citizen_id FK
+        INT apartment_id FK
+        DATE move_in_date
+        VARCHAR status
+    }
+
+    Buildings ||--o{ Apartments : contains
+    Apartments ||--o{ Residents : occupied_by
+    Citizen ||--o{ Residents : lives_in
