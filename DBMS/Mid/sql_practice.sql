@@ -1,0 +1,287 @@
+-- Create Database
+CREATE DATABASE iiuc_4dm;
+
+
+-- Use Database
+USE iiuc_4dm;
+
+
+-- Create table
+CREATE TABLE C241135 (
+	s_id INT PRIMARY KEY,
+    s_name VARCHAR(50)NOT NULL,
+    s_phone VARCHAR(50),
+    s_address VARCHAR(50)
+);
+
+CREATE TABLE teacher1 (
+	t_id INT PRIMARY KEY,
+    t_name VARCHAR(50) NOT NULL
+);
+
+ 
+CREATE TABLE teacher2 (
+	T_id INT PRIMARY KEY,
+    T_name VARCHAR(50) NOT NULL,
+    T_dept VARCHAR(50),
+    T_salary INT
+);
+
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    class VARCHAR(10)
+);
+
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50),
+    student_id INT
+);
+
+
+
+
+
+
+-- Insert in table 
+INSERT INTO C241135 (s_id, s_name, s_phone, s_address) VALUES 
+	(101, 'Hasan', '123456789', 'DHK'),
+    (102, 'Kamal', '987654321', 'CTG'),
+    (103, 'Rony', NULL, 'DHK'),
+    (104, 'Rakib', '234681369', 'COM'),
+    (105, 'Hasan', '234681369', 'CTG');
+
+
+    
+INSERT INTO teacher1 (t_id, t_name) VALUES 
+	(11, 'A'),
+    (12, 'B'),
+    (13, 'C');
+ 
+ 
+ 
+ 
+INSERT INTO teacher2 (T_id, T_name, T_dept, T_salary) VALUES 
+	(201, 'Azad', "CSE", 1000),
+    (202, 'Kamal', "EEE", 2000),
+    (203, 'Hasan', "CE", 1000),
+    (204, 'Kamal', "EEE", 1000),
+    (205, 'Rony', "CSE", 2000),
+    (206, 'Rakib', "CSE", 4000);
+   
+
+
+INSERT INTO students (student_id, student_name, class) VALUES
+	(1, 'Alice', '4DM'),
+	(2, 'Bob', '4DM'),
+	(3, 'Charlie', '4DM'),
+	(4, 'David', '4DM');
+
+
+INSERT INTO courses (course_id, course_name, student_id) VALUES
+	(101, 'Database', 1),
+	(102, 'Math', 1),
+	(103, 'Physics', 2),
+	(104, 'Chemistry', NULL);  
+    
+
+
+
+
+
+
+-- SELECT ( Basic SELECT )
+SELECT * FROM C241135;
+
+SELECT * FROM teacher1;
+ 
+SELECT * FROM teacher2;
+
+SELECT * FROM students;
+
+SELECT * FROM courses;
+
+
+
+
+
+
+-- Select ( Column Projection - specific columns only )
+SELECT s_id FROM C241135;
+
+SELECT s_name FROM C241135;
+
+SELECT s_phone FROM C241135;
+
+SELECT s_address FROM C241135;
+
+
+
+
+-- Select ( Conditional Selection - using WHERE )
+SELECT * FROM C241135 WHERE s_id = 102;
+
+SELECT * FROM C241135 WHERE s_address = 'DHK';
+
+SELECT s_id FROM C241135 WHERE s_name = 'Rakib';
+
+SELECT s_name FROM C241135 WHERE s_id = 102;
+
+
+
+-- Select ( Distinct Selection )
+SELECT DISTINCT  s_address FROM C241135; 
+
+
+
+-- Select ( Column Manipulation ) 				
+SELECT s_id + 5 FROM C241135;		
+					
+SELECT s_id + 5 AS new_s_id FROM C241135;				
+ 
+
+
+
+-- Select ( Range and Set Conditions )
+SELECT * FROM C241135 WHERE s_id > 102;
+
+SELECT * FROM C241135 WHERE s_id BETWEEN 102 AND 104;
+
+SELECT * FROM C241135 WHERE s_id IN(101,104);
+
+SELECT * FROM C241135 WHERE s_id % 2 = 0;
+ 
+
+-- Select ( Pattern Matching with LIKE )
+SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE 'K%';				-- upper function ...shuru hobe K diye
+
+SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE '%L';				-- shesh hobe L diye
+
+SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE 'K%L';				-- shuru hbe K diye shesh hbe L diye
+
+SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE '%a%';				-- a ase kina dekhte name
+
+SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE '%a%d%';				-- a ta d er age hbe
+
+SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE '_____';				-- j  name e 5 ta char ase..mane 5 ta _
+ 
+ 
+ 
+
+
+-- Select ( GROUP BY Queries )
+SELECT T_dept FROM teacher2 WHERE T_id > 201 GROUP BY T_dept;			-- sum mane value + korar jnno...count mane kotojon ase
+ 
+SELECT T_dept, COUNT(*) FROM teacher2 WHERE T_id > 201 GROUP BY T_dept;		-- kon dept e koijon ase tar count kore
+ 
+SELECT T_dept, SUM(T_salary) AS Total_salary FROM teacher2 WHERE T_id > 201 GROUP BY T_dept;			-- Total salary ber kortesi SUM hishebe
+ 
+SELECT T_dept, MIN(T_salary) AS Min_salary FROM teacher2 WHERE T_id > 201 GROUP BY T_dept;			-- prottek dept e min salary koto
+ 
+SELECT T_dept, MAX(T_salary) AS Max_salary FROM teacher2 WHERE T_id > 201 GROUP BY T_dept;			-- proottek dept e max salary koto
+ 
+SELECT T_dept, AVG(T_salary) AS AVG_salary FROM teacher2 WHERE T_id > 201 GROUP BY T_dept;			-- prottek dept e avg
+ 
+SELECT T_dept, MAX(T_salary) AS Max_salary_CSE FROM teacher2 WHERE T_dept = "CSE" GROUP BY T_dept;		-- cse er dept e max kar
+ 
+
+
+
+
+-- Select ( ORDER BY Queries )
+SELECT * FROM teacher2 WHERE T_dept = "CSE" ORDER BY T_id ASC;						-- ascending order e shajaisi order by diye
+
+SELECT * FROM teacher2 WHERE T_dept = "CSE" ORDER BY T_id DESC;					
+ 
+SELECT * FROM teacher2  ORDER BY T_dept DESC;
+ 
+SELECT * FROM teacher2  ORDER BY T_salary DESC, T_dept ASC;
+ 
+ 
+-- Select ( HAVING Query )
+SELECT T_dept, AVG(T_salary) AS AVG_salary FROM teacher2  GROUP BY T_dept HAVING COUNT(*);
+ 
+ 
+ -- Alter table
+ALTER TABLE C241135 ADD COLUMN s_cgpa VARCHAR(50);
+ 
+ALTER TABLE C241135 DROP COLUMN s_cgpa;
+
+
+
+-- Update data
+UPDATE C241135 SET s_name = 'Abid' WHERE s_id = 105;
+
+
+
+-- Delete data 
+DELETE FROM C241135 WHERE s_id = 105;
+
+
+
+-- Truncate table 
+TRUNCATE TABLE teacher1;
+ 
+
+
+
+
+-- Join Table
+SELECT s.student_name, c.course_name FROM students s INNER JOIN courses c ON s.student_id = c.student_id;
+
+SELECT s.student_name, c.course_name FROM students s LEFT JOIN courses c ON s.student_id = c.student_id;
+
+SELECT s.student_name, c.course_name FROM students s RIGHT JOIN courses c ON s.student_id = c.student_id;
+
+
+SELECT s.student_name, c.course_name
+FROM students s
+LEFT JOIN courses c ON s.student_id = c.student_id
+UNION
+SELECT s.student_name, c.course_name
+FROM students s
+RIGHT JOIN courses c ON s.student_id = c.student_id;
+
+
+SELECT s.student_name, c.course_name FROM students s CROSS JOIN courses c;
+
+SELECT s1.student_name AS student1, s2.student_name AS student2 FROM students s1 INNER JOIN students s2 ON s1.student_id < s2.student_id;
+
+SELECT * FROM students NATURAL JOIN courses;
+
+SELECT * FROM students s INNER JOIN courses c USING(student_id);
+
+SELECT s.student_name FROM students s LEFT JOIN courses c ON s.student_id = c.student_id WHERE c.course_id IS NULL;
+
+SELECT s.student_name FROM students s WHERE s.student_id IN (SELECT student_id FROM courses);
+
+
+
+
+
+
+-- Drop table
+DROP TABLE c241135;
+
+DROP TABLE teacher1;
+
+DROP TABLE teacher2;
+ 
+DROP TABLE students;
+
+DROP TABLE courses;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-- SQL Format
+-- SELECT -> FROM -> WHERE -> GROPUP BY -> HAVING -> ORDER BY
+-- <> not equal sign
