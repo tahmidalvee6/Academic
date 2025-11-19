@@ -1,239 +1,190 @@
 erDiagram
-    %% CENTRAL ADMIN PANEL
-    Admin_Main {
-        INT admin_id PK
-        VARCHAR name
-        VARCHAR email
-        VARCHAR password
-        ENUM role
-        VARCHAR contact_no
-    }
-    ServiceLogs {
-        INT log_id PK
-        INT admin_id FK
-        VARCHAR module
-        VARCHAR action
-        TEXT description
-        DATETIME log_time
-    }
-    Notifications {
-        INT notification_id PK
-        INT admin_id FK
-        INT citizen_id FK
-        TEXT message
-        DATETIME date_sent
-    }
-    Reports {
-        INT report_id PK
-        INT admin_id FK
-        VARCHAR module
-        VARCHAR report_type
-        DATETIME created_at
+
+    %% ============================
+    %% CENTRAL ADMIN MODULE
+    %% ============================
+    Central_Admin {
+        int admin_id PK
+        string name
+        string email
     }
 
-    Admin_Main ||--o{ ServiceLogs : manages
-    Admin_Main ||--o{ Notifications : sends
-    Admin_Main ||--o{ Reports : generates
+    Central_Notifications {
+        int notification_id PK
+        string message
+        date date_sent
+    }
 
+    Central_Reports {
+        int report_id PK
+        string module
+        string report_type
+    }
+
+    Central_Admin ||--o{ Central_Notifications : "sends"
+    Central_Admin ||--o{ Central_Reports : "creates"
+
+
+    %% ============================
     %% CITIZEN MODULE
+    %% ============================
     Citizen {
-        INT citizen_id PK
-        VARCHAR name
-        INT age
-        VARCHAR gender
-        VARCHAR address
-        VARCHAR contact_no
-        VARCHAR email
-        VARCHAR password
-    }
-    Complaints {
-        INT complaint_id PK
-        INT citizen_id FK
-        VARCHAR service_type
-        TEXT description
-        VARCHAR status
-        DATETIME date_created
-    }
-    Feedback {
-        INT feedback_id PK
-        INT citizen_id FK
-        VARCHAR service_type
-        TEXT message
-        DATETIME date
-    }
-    Payments {
-        INT payment_id PK
-        INT citizen_id FK
-        VARCHAR service_type
-        DECIMAL amount
-        DATETIME payment_date
-        VARCHAR payment_status
+        int citizen_id PK
+        string name
+        int age
+        string gender
+        string address
+        string contact_no
+        string email
     }
 
-    Citizen ||--o{ Complaints : lodges
-    Citizen ||--o{ Feedback : gives
-    Citizen ||--o{ Payments : makes
-    Notifications ||--o{ Citizen : receives
+    Citizen_Complaints {
+        int complaint_id PK
+        string description
+        string status
+    }
 
+    Citizen_Feedback {
+        int feedback_id PK
+        string message
+    }
+
+    Citizen ||--o{ Citizen_Complaints : "submits"
+    Citizen ||--o{ Citizen_Feedback : "gives"
+
+
+    %% ============================
     %% TRAFFIC MANAGEMENT
-    Admin_Traffic {
-        INT admin_id PK
-        VARCHAR name
-        VARCHAR email
-        VARCHAR password
-        VARCHAR access_level
+    %% ============================
+    Traffic_Admin {
+        int admin_id PK
+        string name
     }
-    Vehicles {
-        INT vehicle_id PK
-        INT citizen_id FK
-        VARCHAR registration_no
-        VARCHAR type
+
+    Traffic_Vehicles {
+        int vehicle_id PK
+        string registration_no
+        string type
     }
-    Violations {
-        INT violation_id PK
-        INT vehicle_id FK
-        VARCHAR type
-        DECIMAL fine_amount
-        VARCHAR status
+
+    Traffic_Violations {
+        int violation_id PK
+        string type
+        float fine_amount
     }
+
     Traffic_Fines {
-        INT fine_id PK
-        INT violation_id FK
-        DECIMAL amount
-        VARCHAR payment_status
-        DATETIME payment_date
+        int fine_id PK
+        float amount
+        string payment_status
     }
 
-    Citizen ||--o{ Vehicles : owns
-    Vehicles ||--o{ Violations : has
-    Violations ||--o{ Traffic_Fines : generates
+    Central_Admin ||--o{ Traffic_Admin : "manages"
+    Traffic_Admin ||--o{ Traffic_Vehicles : "oversees"
+    Citizen ||--o{ Traffic_Vehicles : "owns"
+    Traffic_Vehicles ||--o{ Traffic_Violations : "has"
+    Traffic_Violations ||--o{ Traffic_Fines : "generates"
 
-    %% WASTE MANAGEMENT
-    Admin_Waste {
-        INT admin_id PK
-        VARCHAR name
-        VARCHAR email
-        VARCHAR password
-        VARCHAR access_level
-    }
-    Zones {
-        INT zone_id PK
-        VARCHAR name
-        INT population
-        VARCHAR cleanliness_level
-    }
-    CollectionVehicles {
-        INT vehicle_id PK
-        VARCHAR driver_name
-        VARCHAR vehicle_no
-        INT zone_id FK
-    }
-    CollectionSchedule {
-        INT schedule_id PK
-        INT zone_id FK
-        VARCHAR collection_day
-        TIME time
-    }
 
-    Zones ||--o{ CollectionVehicles : assigned_to
-    Zones ||--o{ CollectionSchedule : scheduled_for
-
-    %% HEALTH MANAGEMENT
-    Admin_Health {
-        INT admin_id PK
-        VARCHAR name
-        VARCHAR email
-        VARCHAR password
-        VARCHAR access_level
-    }
-    Hospitals {
-        INT hospital_id PK
-        VARCHAR name
-        VARCHAR location
-        INT capacity
-        VARCHAR contact_no
-    }
-    Doctors {
-        INT doctor_id PK
-        VARCHAR name
-        VARCHAR specialization
-        INT hospital_id FK
-    }
-    Patients {
-        INT patient_id PK
-        INT citizen_id FK
-        INT doctor_id FK
-        VARCHAR disease
-        DATE admission_date
-        VARCHAR status
-    }
-
-    Hospitals ||--o{ Doctors : employs
-    Doctors ||--o{ Patients : treats
-    Citizen ||--o{ Patients : is_patient
-
+    %% ============================
     %% ENERGY MANAGEMENT
-    Admin_Energy {
-        INT admin_id PK
-        VARCHAR name
-        VARCHAR email
-        VARCHAR password
-        VARCHAR access_level
-    }
-    EnergyAccount {
-        INT account_id PK
-        INT citizen_id FK
-        VARCHAR meter_no
-        VARCHAR connection_type
-    }
-    EnergyUsage {
-        INT usage_id PK
-        INT account_id FK
-        VARCHAR month
-        DECIMAL units_consumed
-    }
-    EnergyBill {
-        INT bill_id PK
-        INT usage_id FK
-        DECIMAL amount
-        DATE due_date
-        VARCHAR payment_status
+    %% ============================
+    Energy_Admin {
+        int admin_id PK
+        string name
     }
 
-    Citizen ||--o{ EnergyAccount : owns
-    EnergyAccount ||--o{ EnergyUsage : records
-    EnergyUsage ||--o{ EnergyBill : generates
-
-    %% HOUSING & INFRASTRUCTURE
-    Admin_Housing {
-        INT admin_id PK
-        VARCHAR name
-        VARCHAR email
-        VARCHAR password
-        VARCHAR access_level
-    }
-    Buildings {
-        INT building_id PK
-        VARCHAR name
-        VARCHAR location
-        VARCHAR type
-        INT total_floors
-    }
-    Apartments {
-        INT apartment_id PK
-        INT building_id FK
-        VARCHAR apartment_no
-        DECIMAL size_sqft
-        DECIMAL rent
-    }
-    Residents {
-        INT resident_id PK
-        INT citizen_id FK
-        INT apartment_id FK
-        DATE move_in_date
-        VARCHAR status
+    Energy_Account {
+        int account_id PK
+        string meter_no
+        string connection_type
     }
 
-    Buildings ||--o{ Apartments : contains
-    Apartments ||--o{ Residents : occupied_by
-    Citizen ||--o{ Residents : lives_in
+    Energy_Usage {
+        int usage_id PK
+        int units
+        string month
+    }
+
+    Energy_Bill {
+        int bill_id PK
+        float amount
+        string payment_status
+    }
+
+    Central_Admin ||--o{ Energy_Admin : "manages"
+    Energy_Admin ||--o{ Energy_Account : "oversees"
+    Citizen ||--o{ Energy_Account : "owns"
+    Energy_Account ||--o{ Energy_Usage : "records"
+    Energy_Usage ||--o{ Energy_Bill : "generates"
+
+
+    %% ============================
+    %% HOSPITAL MANAGEMENT
+    %% ============================
+    Hospital_Admin {
+        int admin_id PK
+        string name
+    }
+
+    Hospitals {
+        int hospital_id PK
+        string name
+        string location
+        int capacity
+    }
+
+    Doctors {
+        int doctor_id PK
+        string name
+        string specialization
+    }
+
+    Patients {
+        int patient_id PK
+        string disease
+        string status
+    }
+
+    Central_Admin ||--o{ Hospital_Admin : "manages"
+    Hospitals ||--o{ Doctors : "employs"
+    Doctors ||--o{ Patients : "treats"
+    Citizen ||--o{ Patients : "is"
+    Hospital_Admin ||--o{ Patients : "oversees"
+
+
+    %% ==========================================
+    %% SMART HOUSING & INFRASTRUCTURE
+    %% ==========================================
+    Smart_Housing_Admin {
+        int admin_id PK
+        string name
+    }
+
+    Housing_Units {
+        int unit_id PK
+        string address
+        string unit_type
+        int size_sqft
+    }
+
+    Maintenance_Requests {
+        int request_id PK
+        string issue_description
+        date request_date
+        string status
+    }
+
+    Infrastructure_Projects {
+        int project_id PK
+        string project_name
+        string project_type
+        date start_date
+        date end_date
+    }
+
+    Central_Admin ||--o{ Smart_Housing_Admin : "manages"
+    Smart_Housing_Admin ||--o{ Housing_Units : "oversees"
+    Citizen ||--o{ Housing_Units : "owns"
+    Housing_Units ||--o{ Maintenance_Requests : "requests"
+    Smart_Housing_Admin ||--o{ Infrastructure_Projects : "manages"
