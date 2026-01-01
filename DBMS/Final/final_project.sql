@@ -4,8 +4,6 @@
 CREATE DATABASE Smart_City_Management_System;
 USE Smart_City_Management_System;
 
-
-
 --  CENTRAL ADMIN MODULE
 CREATE TABLE Central_Admin (
     admin_id INT PRIMARY KEY,
@@ -73,8 +71,6 @@ INSERT INTO Central_Reports (report_id, module, report_type, admin_id) VALUES
 
 
 SELECT * FROM Central_Reports;
-
-
 
 
 -- CITIZEN MODULE
