@@ -18,6 +18,9 @@ bool isPrime(int n) {
     return true;
 }
 
+
+
+
 // 2. Prime Generation (up to n)
 vector<int> generatePrimes(int n) {
     vector<int> primes;
