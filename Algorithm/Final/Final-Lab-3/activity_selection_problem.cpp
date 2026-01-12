@@ -1,11 +1,4 @@
 //Activity Selection Problem
-
-
-
-
-
-
-
 #include<bits/stdc++.h>
 using namespace std;
 class node{
