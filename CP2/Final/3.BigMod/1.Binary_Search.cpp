@@ -33,3 +33,21 @@ int main() {
 
     return 0;
 }
+
+
+
+/*
+🔗 Practice Problems
+
+Codeforces
+
+https://codeforces.com/problemset/problem/474/B
+
+https://codeforces.com/problemset/problem/706/B
+
+
+
+LeetCode
+
+https://leetcode.com/problems/binary-search/
+*/
