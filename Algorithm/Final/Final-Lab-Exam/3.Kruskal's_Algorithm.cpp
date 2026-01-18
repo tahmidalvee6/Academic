@@ -8,10 +8,17 @@ struct Edge{
 Edge edges[100];
 int parent[100];
 
+
 int find(int x){
-    if(parent[x]==x) return x;
-    return find(parent[x]);
+    if(parent[x] == x) {
+        return x;
+    }
+    else {
+        return find(parent[x]);
+    }
 }
+
+
 
 int main(){
     int n,e;
