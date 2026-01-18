@@ -9,8 +9,9 @@ int main(){
 
     for(int i=1;i<=n;i++){
         dist[i]=INT_MAX;
-        for(int j=1;j<=n;j++)
+        for(int j=1;j<=n;j++) {
             cost[i][j]=INT_MAX;
+        }
     }
 
     for(int i=0;i<e;i++){
