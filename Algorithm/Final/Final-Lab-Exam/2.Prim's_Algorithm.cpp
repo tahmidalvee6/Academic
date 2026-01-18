@@ -9,9 +9,12 @@ int main(){
     cin>>n>>e;
 
     // initialize cost matrix
-    for(int i=1;i<=n;i++)
-        for(int j=1;j<=n;j++)
+    for(int i=1;i<=n;i++) {
+        for(int j=1;j<=n;j++) {
             cost[i][j]=INT_MAX;
+        }
+    }
+    
 
     for(int i=0;i<e;i++){
         int u,v,w;
@@ -19,6 +22,7 @@ int main(){
         cost[u][v]=w;
         cost[v][u]=w;
     }
+    
 
     vis[1]=1;   // start from node 1
     int total=0;
