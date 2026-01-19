@@ -1,28 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-bool isPrime(int n) {
-    if (n <= 1) return false;
-    for (int i = 2; i * i <= n; i++) {
-        if (n % i == 0)
-            return false;
-    }
-    return true;
-}
-
 int main() {
     int n;
-    cin >> n;
+    cin>>n;
 
-    if (isPrime(n))
-        cout << "Prime";
+    bool prime = true;
+
+    if (n <= 1) {
+        prime = false;
+    } 
+    else {
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                prime = false;
+                break;
+            }
+        }
+    }
+
+    if (prime)
+        cout<<"Prime";
     else
-        cout << "Not Prime";
-
-    return 0;
+        cout<<"Not Prime";
 }
 
 
+/*
+
+Input
+7
+
+
+Output
+Prime
+
+*/
 
 
 /*
