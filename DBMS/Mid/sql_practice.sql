@@ -155,6 +155,9 @@ SELECT * FROM C241135 WHERE s_id IN(101,104);
 SELECT * FROM C241135 WHERE s_id % 2 = 0;
  
 
+
+
+
 -- Select ( Pattern Matching with LIKE )
 SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE 'K%';				-- upper function ...shuru hobe K diye
 
@@ -168,7 +171,97 @@ SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE '%a%d%';				-- a ta d er age hbe
 
 SELECT * FROM teacher2 WHERE UPPER(T_name) LIKE '_____';				-- j  name e 5 ta char ase..mane 5 ta _
  
- 
+
+
+-- ========================================
+-- 1. Starts with a letter
+-- Names that start with 'K' (case-insensitive using UPPER)
+SELECT * 
+FROM teacher2
+WHERE UPPER(T_name) LIKE 'K%';  
+-- % matches any number of characters after 'K'
+
+
+-- ========================================
+-- 2. Ends with a letter
+-- Names that end with 'L' (case-insensitive)
+SELECT * 
+FROM teacher2
+WHERE UPPER(T_name) LIKE '%L';  
+-- % matches any number of characters before 'L'
+
+
+-- ========================================
+-- 3. Starts and ends with specific letters
+-- Names that start with 'K' and end with 'L'
+SELECT * 
+FROM teacher2
+WHERE UPPER(T_name) LIKE 'K%L';  
+-- % matches any characters in between
+
+
+-- ========================================
+-- 4. Contains a specific letter
+-- Names that contain 'A' anywhere
+SELECT * 
+FROM teacher2
+WHERE UPPER(T_name) LIKE '%A%';  
+-- % before and after allows any characters around 'A'
+
+
+-- ========================================
+-- 5. Contains letters in specific order
+-- Names that contain 'A' followed by 'D' anywhere
+SELECT * 
+FROM teacher2
+WHERE UPPER(T_name) LIKE '%A%D%';  
+-- % matches any characters between or around 'A' and 'D'
+
+
+-- ========================================
+-- 6. Exact length
+-- Names with exactly 5 characters
+SELECT * 
+FROM teacher2
+WHERE UPPER(T_name) LIKE '_____';  
+-- Each _ represents one character (5 underscores = 5 characters)
+
+
+-- ========================================
+-- 7. Specific characters at specific positions
+-- Names where first letter is 'A', 2nd letter can be anything, 3rd is 'D'
+SELECT * 
+FROM teacher2
+WHERE UPPER(T_name) LIKE 'A_D%';  
+-- _ matches a single character, % matches remaining characters
+
+
+-- ========================================
+-- 8. Match one of several characters at a position
+-- Names where the first letter is A, H, or K
+SELECT * 
+FROM teacher2
+WHERE UPPER(T_name) LIKE '[AHK]%';  
+-- Note: In MySQL, [] character set is not supported in LIKE, use REGEXP for this
+
+
+-- ========================================
+-- 9. Escape a wildcard character
+-- Names containing an actual % symbol
+SELECT * 
+FROM teacher2
+WHERE T_name LIKE '%\%%' ESCAPE '\';  
+-- \% treats % as literal
+
+
+-- ========================================
+-- 10. Case-insensitive search
+-- Names containing 'kamal' ignoring case
+SELECT * 
+FROM teacher2
+WHERE T_name LIKE '%kamal%';  
+-- MySQL default collation is case-insensitive; otherwise use UPPER() as before
+
  
 
 
@@ -186,7 +279,107 @@ SELECT T_dept, MAX(T_salary) AS Max_salary FROM teacher2 WHERE T_id > 201 GROUP 
 SELECT T_dept, AVG(T_salary) AS AVG_salary FROM teacher2 WHERE T_id > 201 GROUP BY T_dept;			-- prottek dept e avg
  
 SELECT T_dept, MAX(T_salary) AS Max_salary_CSE FROM teacher2 WHERE T_dept = "CSE" GROUP BY T_dept;		-- cse er dept e max kar
- 
+
+
+
+
+
+
+-- ========================================
+-- 1. Basic GROUP BY
+-- Group rows by department, just return department names (distinct groups)
+SELECT T_dept
+FROM teacher2
+GROUP BY T_dept;
+
+
+-- ========================================
+-- 2. GROUP BY with COUNT
+-- Count how many teachers are in each department
+SELECT T_dept, COUNT(*) AS total_teachers
+FROM teacher2
+GROUP BY T_dept;
+
+
+-- ========================================
+-- 3. GROUP BY with SUM
+-- Calculate total salary for each department
+SELECT T_dept, SUM(T_salary) AS total_salary
+FROM teacher2
+GROUP BY T_dept;
+
+
+-- ========================================
+-- 4. GROUP BY with MIN
+-- Find the minimum salary in each department
+SELECT T_dept, MIN(T_salary) AS min_salary
+FROM teacher2
+GROUP BY T_dept;
+
+
+-- ========================================
+-- 5. GROUP BY with MAX
+-- Find the maximum salary in each department
+SELECT T_dept, MAX(T_salary) AS max_salary
+FROM teacher2
+GROUP BY T_dept;
+
+
+-- ========================================
+-- 6. GROUP BY with AVG
+-- Find the average salary in each department
+SELECT T_dept, AVG(T_salary) AS avg_salary
+FROM teacher2
+GROUP BY T_dept;
+
+
+-- ========================================
+-- 7. GROUP BY with WHERE
+-- Only include teachers with T_id > 201 before grouping
+SELECT T_dept, COUNT(*) AS total_teachers
+FROM teacher2
+WHERE T_id > 201
+GROUP BY T_dept;
+
+
+-- ========================================
+-- 8. GROUP BY with HAVING
+-- Filter groups based on aggregate condition (e.g., departments with total salary > 2000)
+SELECT T_dept, SUM(T_salary) AS total_salary
+FROM teacher2
+GROUP BY T_dept
+HAVING SUM(T_salary) > 2000;
+
+
+-- ========================================
+-- 9. GROUP BY multiple columns
+-- Group by department and salary to see how many teachers earn same salary in a department
+SELECT T_dept, T_salary, COUNT(*) AS count_teachers
+FROM teacher2
+GROUP BY T_dept, T_salary;
+
+
+-- ========================================
+-- 10. GROUP BY with ORDER BY
+-- Group by department and order by total salary descending
+SELECT T_dept, SUM(T_salary) AS total_salary
+FROM teacher2
+GROUP BY T_dept
+ORDER BY total_salary DESC;
+
+
+-- ========================================
+-- 11. GROUP BY specific department
+-- Find max salary for CSE department only
+SELECT T_dept, MAX(T_salary) AS max_salary_CSE
+FROM teacher2
+WHERE T_dept = "CSE"
+GROUP BY T_dept;
+
+
+
+
+
 
 
 
@@ -199,7 +392,97 @@ SELECT * FROM teacher2 WHERE T_dept = "CSE" ORDER BY T_id DESC;
 SELECT * FROM teacher2  ORDER BY T_dept DESC;
  
 SELECT * FROM teacher2  ORDER BY T_salary DESC, T_dept ASC;
- 
+
+
+
+-- ========================================
+-- 1. ORDER BY ASC (Ascending Order)
+-- Sort results from smallest to largest (default is ASC)
+SELECT * 
+FROM teacher2
+ORDER BY T_salary ASC;  -- Salary from lowest to highest
+
+
+-- ========================================
+-- 2. ORDER BY DESC (Descending Order)
+-- Sort results from largest to smallest
+SELECT * 
+FROM teacher2
+ORDER BY T_salary DESC;  -- Salary from highest to lowest
+
+
+-- ========================================
+-- 3. ORDER BY multiple columns
+-- First sort by T_dept ascending, then by T_salary descending
+SELECT * 
+FROM teacher2
+ORDER BY T_dept ASC, T_salary DESC;  
+
+
+-- ========================================
+-- 4. ORDER BY with WHERE condition
+-- Sort only CSE department teachers by salary descending
+SELECT * 
+FROM teacher2
+WHERE T_dept = "CSE"
+ORDER BY T_salary DESC;  
+
+
+-- ========================================
+-- 5. ORDER BY with column alias
+-- Create a calculated column and sort by it
+SELECT T_name, T_salary * 2 AS double_salary
+FROM teacher2
+ORDER BY double_salary DESC;  
+
+
+-- ========================================
+-- 6. ORDER BY using expressions
+-- Sort by length of the teacher name
+SELECT *, LENGTH(T_name) AS name_length
+FROM teacher2
+ORDER BY LENGTH(T_name) ASC;  -- shortest name first
+
+
+-- ========================================
+-- 7. ORDER BY with NULLs first/last (MySQL default: NULLS first for ASC)
+-- Show teachers in descending order of salary, NULL salaries (if any) appear last
+SELECT * 
+FROM teacher2
+ORDER BY T_salary DESC;  
+
+
+-- ========================================
+-- 8. ORDER BY RAND()
+-- Random order of rows
+SELECT * 
+FROM teacher2
+ORDER BY RAND();  
+
+
+-- ========================================
+-- 9. ORDER BY with CASE
+-- Custom ordering: prioritize "CSE" first, then others
+SELECT *
+FROM teacher2
+ORDER BY CASE 
+           WHEN T_dept = 'CSE' THEN 1
+           ELSE 2
+         END ASC, T_salary DESC;  
+
+
+-- ========================================
+-- 10. ORDER BY in subquery
+-- Sort inside subquery and pick top 3 highest salary teachers
+SELECT *
+FROM (SELECT * FROM teacher2 ORDER BY T_salary DESC) AS t
+LIMIT 3;
+
+
+
+
+
+
  
 -- Select ( HAVING Query )
 SELECT T_dept, AVG(T_salary) AS AVG_salary FROM teacher2  GROUP BY T_dept HAVING COUNT(*);
