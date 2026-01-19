@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 int main() {
     int n;
@@ -18,10 +18,12 @@ int main() {
         }
     }
 
-    if (prime)
+    if (prime) {
         cout<<"Prime";
-    else
+    }
+    else {
         cout<<"Not Prime";
+    }
 }
 
 
