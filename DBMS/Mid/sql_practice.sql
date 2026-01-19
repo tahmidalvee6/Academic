@@ -259,6 +259,101 @@ SELECT s.student_name FROM students s LEFT JOIN courses c ON s.student_id = c.st
 SELECT s.student_name FROM students s WHERE s.student_id IN (SELECT student_id FROM courses);
 
 
+-- ========================================
+-- 1. INNER JOIN
+-- Returns only the rows that match in both tables
+-- Students with courses (only those who have courses)
+SELECT s.student_name, c.course_name
+FROM students s
+INNER JOIN courses c
+ON s.student_id = c.student_id;
+
+
+-- ========================================
+-- 2. LEFT JOIN (LEFT OUTER JOIN)
+-- Returns all rows from the left table; unmatched right table rows will be NULL
+-- All students, even if they don't have courses
+SELECT s.student_name, c.course_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.student_id;
+
+
+-- ========================================
+-- 3. RIGHT JOIN (RIGHT OUTER JOIN)
+-- Returns all rows from the right table; unmatched left table rows will be NULL
+-- All courses, even if no student assigned
+SELECT s.student_name, c.course_name
+FROM students s
+RIGHT JOIN courses c
+ON s.student_id = c.student_id;
+
+
+-- ========================================
+-- 4. FULL OUTER JOIN (simulated with UNION in MySQL)
+-- Returns all rows from both tables; NULL if no match
+SELECT s.student_name, c.course_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.student_id
+UNION
+SELECT s.student_name, c.course_name
+FROM students s
+RIGHT JOIN courses c
+ON s.student_id = c.student_id;
+
+
+-- ========================================
+-- 5. CROSS JOIN
+-- Returns the cartesian product of both tables (every combination)
+SELECT s.student_name, c.course_name
+FROM students s
+CROSS JOIN courses c;
+
+
+-- ========================================
+-- 6. SELF JOIN
+-- Join a table with itself; useful for comparing rows within the same table
+-- Compare students with each other (all pairs)
+SELECT s1.student_name AS student1, s2.student_name AS student2
+FROM students s1
+INNER JOIN students s2
+ON s1.student_id < s2.student_id;
+
+
+-- ========================================
+-- 7. NATURAL JOIN
+-- Automatically joins on columns with the same name in both tables
+SELECT *
+FROM students
+NATURAL JOIN courses;
+
+
+-- ========================================
+-- 8. JOIN USING
+-- Join tables explicitly using a shared column
+SELECT *
+FROM students s
+INNER JOIN courses c
+USING(student_id);
+
+
+-- ========================================
+-- 9. ANTI JOIN (Find rows in left table with no match in right table)
+-- Students without courses
+SELECT s.student_name
+FROM students s
+LEFT JOIN courses c
+ON s.student_id = c.student_id
+WHERE c.course_id IS NULL;
+
+
+-- ========================================
+-- 10. SEMI JOIN (Find rows in left table that exist in right table)
+-- Students with at least one course
+SELECT s.student_name
+FROM students s
+WHERE s.student_id IN (SELECT student_id FROM courses);
 
 
 
