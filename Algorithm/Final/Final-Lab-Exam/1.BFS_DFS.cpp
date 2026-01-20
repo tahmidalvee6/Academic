@@ -3,6 +3,7 @@ using namespace std;
 
 int visitt[100];
 vector<int> v[100];
+int adjMatrix[100][100]; // adjacency matrix
 
 void init(int n){
     for(int i=1;i<=n;i++){
@@ -45,18 +46,29 @@ int main(){
 
     init(vert);
 
+    // initialize adjacency matrix
+    for(int i=1;i<=vert;i++){
+        for(int j=1;j<=vert;j++){
+            adjMatrix[i][j] = 0;
+        }
+    }
+
     for(int i=0;i<e;i++){
         int a,b;
         cin >> a >> b;
         if(a==b){
             v[a].push_back(b);
-        }else{
+            adjMatrix[a][b] = 1;
+        } else {
             v[a].push_back(b);
             v[b].push_back(a);
+            adjMatrix[a][b] = 1;
+            adjMatrix[b][a] = 1;
         }
     }
 
     // Print adjacency list
+    cout << "Adjacency List\n";
     for(int i=1;i<=vert;i++){
         cout << i << " : ";
         for(int j=0;j<v[i].size();j++){
@@ -65,62 +77,21 @@ int main(){
         cout << "\n";
     }
 
-    cout << "The output of DFS:\n";
+    // Print adjacency matrix
+    cout << "\nAdjacency Matrix\n";
+    for(int i=1;i<=vert;i++){
+        for(int j=1;j<=vert;j++){
+            cout << adjMatrix[i][j] << " ";
+        }
+        cout << "\n";
+    }
+
+    cout << "\nThe output of DFS:\n";
     dfs(1);
 
-    cout << "The output of BFS:\n";
+    cout << "\nThe output of BFS:\n";
     init(vert);
     bfs(1);
 
     return 0;
 }
-
-
-
-
-/*
-Input :
-6 7
-1 2
-1 3
-2 4
-2 5
-3 6
-4 5
-5 6
-
-
-
-Expected Output :
-
-Adjacency List
-1 : 2 3 
-2 : 1 4 5 
-3 : 1 6 
-4 : 2 5 
-5 : 2 4 6 
-6 : 3 5 
-
-
-DFS Traversal (post-order)
-The output of DFS :
-4
-5
-2
-6
-3
-1
-
-
-
-
-BFS Traversal
-The output of BFS:
-1
-2
-3
-4
-5
-6
-
-*/
