@@ -4,6 +4,9 @@ CREATE DATABASE IF NOT EXISTS iiuc_4dm;
 -- Use Database
 USE iiuc_4dm;
 
+
+
+
 -- Create tables
 CREATE TABLE IF NOT EXISTS C241135 (
     s_id INT PRIMARY KEY,
