@@ -3,6 +3,8 @@ using namespace std;
 
 int cost[100][100], dist[100], vis[100];
 
+
+
 int main(){
     int n,e;
     cin>>n>>e;
