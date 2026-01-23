@@ -23,15 +23,15 @@ int main(){
         cost[v][u]=w;
     }
 
-    dist[1]=0;
+    dist[1]=0;                                                // eikhane Dijkstra shuru hoy source node theke...ekhane source node hosse 1...r 1 theke 1 er distance 0
 
     for(int k=1;k<=n;k++){
-        int mn=INT_MAX, u=-1;
+        int mn=INT_MAX, u=-1;                                 // mn hosse akhn pojjonto paoya shob chaye kom distance....r u hosse shei node jar dist shb chaye kom
 
-        for(int i=1;i<=n;i++){
-            if(!vis[i] && dist[i]<mn){
+        for(int i=1;i<=n;i++){                                 // unvisited node gular modde distance shbr kom kar sheta check kortesi...jodi 1 -1 -> 0 hoy taile 1 nibo....
+            if(!vis[i] && dist[i]<mn){             
                 mn=dist[i];
-                u=i;
+                u=i;                                            // 1 k visited bolbo
             }
         }
 
