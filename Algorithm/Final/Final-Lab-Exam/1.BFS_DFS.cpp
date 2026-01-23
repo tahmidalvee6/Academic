@@ -3,7 +3,7 @@ using namespace std;
 
 int visitt[100];
 vector<int> v[100];
-int adjMatrix[100][100]; // adjacency matrix
+int adjMatrix[100][100]; 
 
 void init(int n){
     for(int i=1;i<=n;i++){
@@ -95,3 +95,60 @@ int main(){
 
     return 0;
 }
+
+
+
+/*
+Input :
+6 7
+1 2
+1 3
+2 4
+2 5
+3 6
+4 5
+5 6
+
+
+
+Expected Output :
+
+Adjacency List
+1 : 2 3 
+2 : 1 4 5 
+3 : 1 6 
+4 : 2 5 
+5 : 2 4 6 
+6 : 3 5 
+
+
+Adjacency Matrix
+0 1 1 0 0 0 
+1 0 0 1 1 0 
+1 0 0 0 0 1 
+0 1 0 0 1 0 
+0 1 0 1 0 1 
+0 0 1 0 1 0 
+
+DFS Traversal (post-order)
+The output of DFS :
+4
+5
+2
+6
+3
+1
+
+
+
+
+BFS Traversal
+The output of BFS:
+1
+2
+3
+4
+5
+6
+
+*/
