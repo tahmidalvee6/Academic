@@ -27,12 +27,12 @@ int main(){
     vis[1]=1;   // start from node 1
     int total=0;
 
-    for(int k=1;k<n;k++){
+    for(int k=1;k<n;k++){                    // mst te n - 1 ta edge lage....tai loop cholbe n - 1 pojjonto
         int mn=INT_MAX, a=-1, b=-1;        // mn = INT_MAX mane shurute amra dhore ni kono edge paoya jae nai...mane minimum edge e infinity....a hosse source node ba visited node r -1 hossse shurute kono node select kori nai
 
-        for(int i=1;i<=n;i++){
+        for(int i=1;i<=n;i++){            // i shob node er upor ghurbe bt amra shb node chai na...only visited gula chai
             if(vis[i]){
-                for(int j=1;j<=n;j++){
+                for(int j=1;j<=n;j++){                // j er shb node unvisited gula check kortese
                     if(!vis[j] && cost[i][j]<mn){
                         mn=cost[i][j];
                         a=i; b=j;
