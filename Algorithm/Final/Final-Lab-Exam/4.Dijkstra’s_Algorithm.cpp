@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int cost[100][100], dist[100], vis[100];
+int cost[100][100], dist[100], vis[100];                    // dist hosse source node theke durotto
 
 
 
