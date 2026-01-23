@@ -28,7 +28,7 @@ int main(){
     int total=0;
 
     for(int k=1;k<n;k++){
-        int mn=INT_MAX, a=-1, b=-1;
+        int mn=INT_MAX, a=-1, b=-1;        // mn = INT_MAX mane shurute amra dhore ni kono edge paoya jae nai....a hosse source node ba visited node r -1 hossse shurute kono node select kori nai
 
         for(int i=1;i<=n;i++){
             if(vis[i]){
