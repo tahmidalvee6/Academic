@@ -10,6 +10,7 @@ int main(){
     for(int i=0;i<e;i++){
         int a,b;
         cin >> a >> b;
+        
         v[a].push_back(b);
         v[b].push_back(a);   // undirected graph
     }
