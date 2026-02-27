@@ -22,22 +22,60 @@ This repository stores and organizes all my academic materials — course notes,
 
 ---
 
-## 🏫 Subjects & Courses
+## 📈 Academic Progress
 
-- **[Course Name](#)** — Semester
-- **[Course Name](#)** — Semester
-- **[Course Name](#)** — Semester
-- **[Course Name](#)** — Semester
+Currently in **5th Semester** of my university studies.
+
+✅ Semester 1 &nbsp;|&nbsp; ✅ Semester 2 &nbsp;|&nbsp; ✅ Semester 3 &nbsp;|&nbsp; ✅ Semester 4 &nbsp;|&nbsp; 🔄 Semester 5
 
 ---
 
-## 📈 Academic Progress
+## 🏫 Subjects & Courses
 
-| Semester | Status |
-|----------|--------|
-| Semester 1 | ✅ Completed |
-| Semester 2 | ✅ Completed |
-| Semester 3 | 🔄 Ongoing |
+<details>
+<summary><strong>Semester 1</strong></summary>
+
+- Course Name
+- Course Name
+- Course Name
+
+</details>
+
+<details>
+<summary><strong>Semester 2</strong></summary>
+
+- Course Name
+- Course Name
+- Course Name
+
+</details>
+
+<details>
+<summary><strong>Semester 3</strong></summary>
+
+- Course Name
+- Course Name
+- Course Name
+
+</details>
+
+<details>
+<summary><strong>Semester 4</strong></summary>
+
+- Course Name
+- Course Name
+- Course Name
+
+</details>
+
+<details open>
+<summary><strong>Semester 5 🔄 Ongoing</strong></summary>
+
+- Course Name
+- Course Name
+- Course Name
+
+</details>
 
 ---
 
