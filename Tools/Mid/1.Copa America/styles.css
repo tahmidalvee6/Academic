@@ -1,38 +1,781 @@
+/* Font style  */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body{
     font-family: 'Poppins', sans-serif;
 }
-
+/* Header par  design start */
 header{
-    background-color: #2D25A0;
-    height: 100vh;
+    background-color:  #2D25A0;
+    height: 600px;
+    
+}
+
+/* menubar Design start*/
+nav{
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    
+}
+.nav-block{
+    position: relative;
+    left: 100px;
+    padding-top: 42px;
+}
+.login-button{
+    position: relative;
+    right: 124px;
+    padding-top: 42px;
+}
+.login-button i{
+    margin-right: 5px;
 }
 
-.header-section{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    width: 100%;
-    padding: 0 100px;
-}
-
-.title-section h1{
-    font-size: 64px;
+.nav-block a{
     color: white;
     font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+    margin-right: 20px;
+    padding: 10px;
+}
+.nav-block a:hover{
+    color: red;
+    display: inline-block;
+    background-color: snow;
+    
+}
+.login-button button{
+    background-color: #E02C6D;
+    color: white;
+    padding: 10px 24px;
+}
+.login-button button:hover{
+    background-color: rgb(100, 66, 66);
+    transition: background-color 1s ease-in;
 }
 
-.title-image img{
-    width: 556px;
-    height: 438px;
+/* menubar Design ended*/
+
+
+
+.header-section{
+    display:grid;
+    grid-template-columns: repeat(2,1fr); 
 }
+.title{
+    width: 485px;
+    height: 230px;
+    
+}
+.title h1:hover{
+    transform: scale(1.2) skewX(20deg) translateX(50px);
+    color: rgb(197, 151, 113);
+    transition: transform 1s ease-in-out,color 1s ease-out;
+}
+.title-section{
+    margin-left: 100px;
+    
+}
+.title h1{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    color: white;
+    margin-bottom: 10px;
+}
+.title-section button{
+    background-color: #E02C6D;
+    color: white;
+    font-weight: bold;
+    padding: 10px 24px;
+    margin-top: 54px;
+    
+}
+.title-section button:hover{
+    background-color: rgb(100, 66, 66);
+    transition: background-color .6s ease-in;
+}
+.title-section button i{
+    margin-left: 5px;
+}
+.title-image img{
+    
+    width: 556.01px;
+    height: 438px;
+    position:relative;
+    top: 50px;
+    margin-right: 102px;
+    margin-bottom: 86px;
+    
+}
+.title-image img:hover{
+    transform: rotate(360deg) scale(.3);
+    transition: transform 3s ease-in-out;
+}
+
+/* Header part Design end */
+
+
+/* Main part of website design start */
+main{
+    position: relative;
+    left: 70px;
+    right: 100px;
+}
+/* Player pic design start */
+.players{
+    position: relative;
+    top: 60px;
+    left: 100px;
+    display: grid;
+    grid-template-columns:repeat(3, 300px);
+    grid-column-gap: 50px;
+    grid-row-gap:27px; 
+}
+
+.player{
+    width: 280px;
+    height: 474px;
+    padding: 15px;
+    box-shadow: 2px 3px 2px 2px rgb(243, 225, 225);
+    margin-right: 10px;
+    
+    
+}
+.player-image img{
+    width: 280px;
+    height: 230px;
+}
+.player-image img:hover{
+    transform: scale(0.5);
+    transition: transform 1s ease-in;
+}
+.player-info h1{
+    font-size: 28px;
+    font-weight: 700;
+}
+.player-info p{
+    text-align: justify;
+}
+/* player pic design end */
+
+
+
+
+
+/* Highlight section part design start */
+.hightlight-section{
+    display: grid;
+    grid-template-columns: repeat(2, 400px);
+    grid-column-gap: 100px;
+    margin-top: 200px;
+    position: relative;
+    left: 100px;
+}
+.highlight-info{
+    width: 450px;
+    height: 300px;
+    margin-right: 60px;
+}
+.highlight-info h1{
+    font-size: 45px;
+    font-weight: 700;
+}
+.highlight-info button{
+    background-color: #E02C6D;
+    color: white;
+    font-weight: bold;
+    width: 173px;
+    height: 40px;
+    padding: 10px 24px;
+    margin-top: 20pxpx;
+}
+.highlight-info button i{
+    margin-left: 5px;
+}
+
+.highlight-image img{
+    width: 550px;
+    height: 400px;
+}
+
+/* Highlight section part design end */
+
+
+/* Gallery part design start */
+.Gallery{
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+.Gallery h1{
+    font-size: 35px;
+    font-weight: 900;
+    
+}
+.gallery-pic{
+    display: grid;
+    grid-template-columns:repeat(3, 300px);
+    grid-column-gap: 40px;
+    grid-row-gap:27px; 
+}
+.gallery-pic img{
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    border: 5px solid lightslategrey;
+}
+
+/* Gallery part design end */
+
+
+
+/* Video part design start */
+.video-section{
+    position: relative;
+    top: 120px;
+    left: 100px;
+}
+.video-section h1{
+    font-size: 35px;
+    font-weight: 900;
+}
+.videos iframe{
+    border: 5px solid lightslategray;
+    margin: 13px;
+}
+/* Video part design start */
+
+
+/* Footer design start */
+footer{
+    position: relative;
+    top: 200px;
+    left: 400px;
+    
+}
+.footer-image img{
+    width: 450px;
+    height: 100px;
+}
+.contact-icon{
+    width: 170px;
+    width: 30px;
+    display: flex;
+    position: relative;
+    left: 150px;
+    margin-top: 20px;
+}
+.contact-icon i{
+    padding: 10px;
+    background-color: rgb(221, 212, 212);
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+.copyright{
+    width: 230px;
+    height: 32px;
+    margin-top: 20px;
+    position:relative;
+    left: 140px;
+    padding-bottom: 60px;
+}
+/* Footer design ended */
+/* main part of website design ended */
+
+
+
+
+
+/* Responsive version design for mobile */
+@media  only screen and (max-width:688px){
+    .nav-block{
+        position: relative;
+        left: 5px;
+        padding-top: 10px;
+        margin-right: 50px;
+    }
+    .login-button{
+        position: relative;
+        right: 140px;
+        padding-top: 5px;
+    }
+    .login-button i{
+        margin-right: 3px;
+    }
+    
+    .nav-block a{
+        font-size: 8px;
+        margin-right: 5px;
+        padding: 5px;
+    }
+    .login-button button{
+        color: white;
+        padding: 3px 8px;
+    }
+    
+    
+    header{
+        width: 600px;
+        height: 900px;
+        
+    }
+    .header-section{
+        display:grid;
+        grid-template-columns: repeat(1,1fr);
+        
+        
+    }
+    .title{
+        width: 205px;
+        height: 150px;
+        
+    }
+    .title-section{
+        margin-left: 50px;
+        
+    }
+    .title h1{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 40px;
+        color: white;
+        margin-bottom: 5px;
+    }
+    .title-section button{
+        background-color: #E02C6D;
+        color: white;
+        font-weight: bold;
+        padding: 10px 24px;
+        margin-top: 100px;
+        
+    }
+    .title-section button i{
+        margin-left: 5px;
+    }
+    
+    .title-image img{
+        
+        width: 400px;
+        height: 358px;
+        position:relative;
+        top: 50px;
+        margin-left: 50px;
+        margin-top: 30px;
+        
+    }
+    
+    main{
+        position: relative;
+        left: 70px;
+        right: 100px;
+    }
+    /* Player pic design start */
+    .players{
+        position: relative;
+        top: 60px;
+        left: 10px;
+        display: grid;
+        grid-template-columns:repeat(1, 300px);
+        grid-column-gap: 50px;
+        grid-row-gap:27px; 
+    }
+    /* player pic design end */
+    
+    
+    /* Highlight section part design start */
+    .hightlight-section{
+        display: grid;
+        grid-template-columns: repeat(1, 400px);
+        grid-column-gap: 100px;
+        margin-top: 100px;
+        position: relative;
+        left: 20px;
+    }
+    .highlight-info{
+        width: 320px;
+        height: 300px;
+        margin-right: 60px;
+    }
+    .highlight-info p{
+        text-align: justify;
+    }
+    .highlight-image img{
+        margin-top: 200px;
+        width: 320px;
+        height: 400px;
+    }
+    
+    /* Highlight section part design end */
+    
+    /* Gallery part design start */
+    .Gallery{
+        position: relative;
+        top: 70px;
+        left: 20px;
+    }
+    .Gallery h1{
+        font-size: 35px;
+        font-weight: 900;
+        position: relative;
+        left: 80px;
+        
+        
+    }
+    .gallery-pic{
+        display: grid;
+        grid-template-columns:repeat(2, 100px);
+        grid-column-gap:70px;
+        grid-row-gap:27px; 
+    }
+    .gallery-pic img{
+        width: 150px;
+        height: 200px;
+        margin: 5px;
+        border: 5px solid lightslategrey;
+    }
+    
+    /* Gallery part design end */
+    
+    /* Video part design start */
+    .video-section{
+        position: relative;
+        top: 120px;
+        left: 20px;
+    }
+    .video-section h1{
+        position: relative;
+        left: 80px;
+    }
+    
+    
+    .videos iframe{
+        width: 300px;
+        height: 200px;
+        
+        
+    } 
+    /* Video part design start */
+    
+    /* Footer design start */
+    footer{
+        position: relative;
+        top: 200px;
+        left: 80px;
+        
+    }
+    .footer-image img{
+        width: 300px;
+        height: 100px;
+        position: relative;
+        left: 20px;
+        
+    }
+    .contact-icon{
+        position: relative;
+        left: 100px;
+        margin-top: 10px;
+    }
+    
+    
+    .copyright{
+        position:relative;
+        left: 100px;
+    }
+    /* Footer design start */
+    
+}
+/* Responsive version design for Tab */
+@media  only screen and (min-width:688px) and (max-width:992px){
+    
+    main{
+        position: relative;
+        left: 10px;
+    }
+    
+    .nav-block{
+        position: relative;
+        left: 15px;
+    }
+    .nav-block a{
+        font-size: 10px;
+        margin-right: 5px;
+        padding: 5px;
+    }
+    
+    
+    
+    header{
+        
+        height: 500px;
+        width:  688px;
+        
+    }
+    .header-section{
+        display:grid;
+        grid-template-columns: repeat(2,1fr);   
+    }
+    .title{
+        width: 205px;
+        height: 200px;
+        
+    }
+    
+    .title h1{
+        
+        font-size: 35px;
+        padding-top: 20px;
+        margin-bottom: 5px;
+    }
+    .title-section button{
+        padding: 10px 24px;
+        margin-top: 100px;
+        
+    }
+    
+    .title-image img{
+        
+        width: 350px;
+        height: 320px;
+        position:relative;
+        top: 50px;
+        margin-left: 30px;
+        margin-top: 30px;
+        
+    }
+    
+    main{
+        position: relative;
+        left: 2px;
+    }
+    /* Player pic design start */
+    
+    .players{
+        position: relative;
+        left: 70px;
+        display: grid;
+        grid-template-columns:repeat(2, 200px);
+        grid-column-gap: 90px;
+        
+    }
+    
+    .player{
+        width: 220px;
+        height: 520px; 
+    }
+    .player-image img{
+        width: 220px;
+        height: 230px;
+    }
+    
+    /* player pic design end */
+    
+    
+    /* Highlight section part design start */
+    .hightlight-section{
+        display: grid;
+        grid-template-columns: repeat(1, 500px);
+        grid-column-gap: 100px;
+        margin-top: 100px;
+        position: relative;
+        left: 100px;
+    }
+    .highlight-info{
+        width: px;
+        height: 300px;
+        margin-right: 60px;
+    }
+    .highlight-info p{
+        text-align: justify;
+    }
+    .highlight-image img{
+        margin-top: 130px;
+        width: 470px;
+        height: 400px;
+    }
+    
+    /* Highlight section part design end */
+    
+    /* Gallery part design start */
+    
+    /* .Gallery h1{
+        position: relative;
+        left: 14px;  
+    }
+    .gallery-pic{
+        
+        position: relative;
+        left: 70px;
+        display: grid;
+        grid-template-columns:repeat(3, 100px);
+        grid-column-gap: 90px;
+        
+    }
+    */
+    .Gallery{
+        position: relative;
+        top: 60px;
+        left: 70px;
+    }
+    .gallery-pic{
+        display: grid;
+        grid-template-columns:repeat(2, 300px);
+        grid-column-gap: 10px;
+        grid-row-gap:27px; 
+    }
+    .gallery-pic img{
+        width: 250px;
+        height: 200px;
+        margin: 10px;
+        border: 5px solid lightslategrey;
+    }
+    
+    
+    /* Gallery part design end */
+    
+    /* Video part design start */
+    .video-section{
+        position: relative;
+        top: 80px;
+        left: 70px;
+    }
+    .video-section h1{
+        position: relative;
+        left: 14px;
+    }
+    
+    .videos iframe{
+        width: 250px;
+        height: 300px;
+        
+        
+    } 
+    /* Video part design start */
+    
+    /* Footer design start */
+    footer{
+        position: relative;
+        top: 200px;
+        left: 150px;
+        
+    }
+}
+
+/* Footer design start */
+
+/* -------------------------------------------------- */
+/* -------------------------------------------------- */
+/* Resonsive design for samll mobile */
+@media only screen and (max-width:410px){
+    
+    
+    
+    .nav-block{
+        position: relative;
+        left: 20px;
+        padding-top: 10px;
+        margin-right: 2px;
+    }
+    .login-button{
+        position: relative;
+        right: 90px;
+        padding-top: 5px;
+    }
+    
+    .nav-block a{
+        font-size: 6px;
+        margin-right: 3px;
+        padding: 5px;
+    }
+    .login-button button{
+        color: white;
+        padding: 3px 5px;
+    }
+    
+    
+    header{
+        width: 450px;
+        height: 900px;
+        
+    }
+    
+    .title-image img{
+        
+        width: 300px;
+        height: 358px;
+        position:relative;
+        top: 50px;
+        padding-right: 5px;
+        padding-left: 10px;
+        margin-top: 30px;
+        
+    }
+    
+    main{
+        position: relative;
+        left: 0px;
+        
+    }
+    /* Player pic design start */
+    .players{
+        position: relative;
+        top: 40px;
+        left: 30px;
+    }
+    /* player pic design end */
+    
+    
+    /* Highlight section part design start */
+    .hightlight-section{
+        display: grid;
+        grid-template-columns: repeat(1, 350px);
+        grid-column-gap: 100px;
+        margin-top: 80px;
+        position: relative;
+        left: 30px;
+    }
+    
+    /* Highlight section part design end */
+    
+    /* Gallery part design start */
+    .Gallery{
+        position: relative;
+        top: 40px;
+        left: 30px;
+    }
+    
+    
+    /* Gallery part design end */
+    
+    /* Video part design start */
+    .video-section{
+        position: relative;
+        top: 80px;
+        left: 30px;
+    }
+    .video-section h1{
+        position: relative;
+        left: 90px;
+        
+    }
+    
+    /* Video part design start */
+    
+    /* Footer design start */
+    footer{
+        position: relative;
+        top: 100px;
+        left: 20px;
+        
+    }
+}
+
+
+
+
 
