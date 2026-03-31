@@ -9,43 +9,37 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
+  <!-- NAVBAR  Section -->
+  <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
-        <span class="logo-bracket">&lt;</span>
+        <span class="logo-bracket"><</span>
         <span class="logo-text">Tahmid Alvee</span>
-        <span class="logo-bracket">/&gt;</span>
+        <span class="logo-bracket">/></span>
       </div>
-      <ul class="nav-menu">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#achievements" class="nav-link">Achievements</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
+      <div class="nav-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-bg">
-      <div class="hero-blob hero-blob--1"></div>
-      <div class="hero-blob hero-blob--2"></div>
-      <div class="hero-blob hero-blob--3"></div>
-    </div>
     <div class="hero-content">
       <div class="hero-text">
         <div class="hero-badge">
-          <span class="hero-badge__dot"></span>
+          <span class="hero-badge-dot"></span>
           <span>Available for Work</span>
         </div>
-        <h1 class="hero-heading">Hello, I'm <span class="hero-heading__name">Alvee</span></h1>
+        <h1 class="hero-heading">Hello, I'm <span class="hero-heading-name">Alvee</span></h1>
         <p class="hero-role">
-          <span class="hero-role__bracket">&lt;</span>
+          <span class="hero-role-bracket"><</span>
           MERN Stack Developer
-          <span class="hero-role__bracket">/&gt;</span>
+          <span class="hero-role-bracket">/></span>
         </p>
         <p class="hero-desc">
           Passionate about the intersection of Data Science and Software Development — always learning, always building.
@@ -71,9 +65,9 @@
         </div>
       </div>
       <div class="hero-image">
-        <div class="hero-image__ring">
-          <div class="hero-image__inner">
-            <img src="assets/images/profile3.jpeg" alt="Tahmid Alvee" class="hero-image__photo" />
+        <div class="hero-image-ring">
+          <div class="hero-image-inner">
+            <img src="assets/images/profile2.jpeg" alt="Tahmid Alvee" class="hero-image-photo" />
           </div>
         </div>
       </div>
@@ -115,10 +109,10 @@
       <div class="about-content">
         <div class="about-text">
           <p class="about-intro">
-            I'm an undergraduate <strong>Computer Science & Engineering student</strong> at
+            I'm an undergraduate <b>Computer Science & Engineering student</b> at
             International Islamic University Chittagong (IIUC), with a strong passion for
-            <strong>Data Science</strong>, <strong>Problem Solving</strong>, and
-            <strong>Software Development</strong>.
+            <b>Data Science</b>, <b>Problem Solving</b>, and
+            <b>Software Development</b>.
           </p>
           <p>
             My journey in tech is driven by curiosity and a desire to build meaningful solutions.
@@ -277,7 +271,7 @@
         </div>
         <div class="skill-card">
           <div class="skill-card-header">
-            <div class="skill-icon"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.204.12.33l-.014.012c-.054-.09-.09-.197-.126-.33-.63-.04-.126-.09-.175-.15v.013c.04.138.135.207.24.27l.014.013c-.095-.044-.174-.127-.24-.197-.126-.066-.216-.017-.269.068l-.014-.012c.095-.113.193-.197.31-.234.244-.134.524.017.634.28l-.014.012c-.06-.08-.138-.134-.21-.18v.013c.27.043.47.23.46.45z"/></svg></div>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M17.6 8.4c-.3-1.2-.9-2.3-1.7-3.2-.8-.9-1.9-1.6-3.2-2-.4-.1-.7.2-.8.6 0 .4.2.7.6.8 1 .3 1.8.8 2.4 1.5.6.7 1.1 1.6 1.3 2.6.1.4.5.6.9.5.3-.1.5-.5.5-.8zM20.1 11.2c-.4-1-1-1.9-1.9-2.6-.3-.2-.7-.2-.9.1-.2.3-.2.7.1.9.7.6 1.2 1.3 1.5 2.1.1.3.4.5.7.5.1 0 .3-.1.4-.2.1-.2.1-.5.1-.8zM14.7 14.9c-.2-.3-.6-.3-.9-.1-.6.5-1.3.7-2 .7-.7 0-1.5-.2-2.1-.7-.3-.2-.7-.2-.9.1-.2.3-.2.7.1.9.9.7 2 1 3 .9 1 0 2.1-.4 3-1.1.3-.2.3-.6-.2-.7z"/></svg></div>
             <span class="skill-name">MySQL</span>
             <span class="skill-percent">65%</span>
           </div>
@@ -314,79 +308,6 @@
             <span class="skill-percent">80%</span>
           </div>
           <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <div class="skill-icon"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M10.5 15.5L7 12l3.5-3.5L9 7l-5 5 5 5 1.5-1.5zm3 0L17 12l-3.5-3.5L15 7l5 5-5 5-1.5-1.5z"/></svg></div>
-            <span class="skill-name">C#</span>
-            <span class="skill-percent">55%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
-        </div>
-      </div>
-      <div class="roles-section">
-        <h3 class="roles-title">Development Roles</h3>
-        <div class="roles-grid">
-          <div class="role-card">
-            <div class="role-header">
-              <div class="role-icon">📊</div>
-              <div class="role-info">
-                <h4>Data Scientist</h4>
-                <p class="role-period">2024 — Present</p>
-              </div>
-            </div>
-            <span class="role-badge">Personal Projects</span>
-            <ul class="role-list">
-              <li>Data analysis and visualization using Python</li>
-              <li>Learning machine learning models and algorithms</li>
-              <li>Working with libraries like NumPy, Pandas & Matplotlib</li>
-            </ul>
-          </div>
-          <div class="role-card">
-            <div class="role-header">
-              <div class="role-icon">💻</div>
-              <div class="role-info">
-                <h4>Web Developer</h4>
-                <p class="role-period">2024 — Present</p>
-              </div>
-            </div>
-            <span class="role-badge">Personal Projects</span>
-            <ul class="role-list">
-              <li>Building responsive websites with HTML, CSS & JavaScript</li>
-              <li>Developing full-stack apps using the MERN stack</li>
-              <li>Focused on clean UI and performance</li>
-            </ul>
-          </div>
-          <div class="role-card">
-            <div class="role-header">
-              <div class="role-icon">📱</div>
-              <div class="role-info">
-                <h4>App Developer</h4>
-                <p class="role-period">2024 — Present</p>
-              </div>
-            </div>
-            <span class="role-badge">Personal Projects</span>
-            <ul class="role-list">
-              <li>Building cross-platform mobile apps with Flutter & Dart</li>
-              <li>Designing user-friendly mobile interfaces</li>
-              <li>Integrating APIs and local storage solutions</li>
-            </ul>
-          </div>
-          <div class="role-card">
-            <div class="role-header">
-              <div class="role-icon">🎮</div>
-              <div class="role-info">
-                <h4>Game Developer</h4>
-                <p class="role-period">2024 — Present</p>
-              </div>
-            </div>
-            <span class="role-badge">Personal Projects</span>
-            <ul class="role-list">
-              <li>Creating 2D/3D games using Unity and Scratch</li>
-              <li>Implementing game mechanics and physics with C#</li>
-              <li>Designing interactive gameplay experiences</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
@@ -465,7 +386,6 @@
             <div class="project-tech">
               <span class="tech-tag">HTML</span>
               <span class="tech-tag">CSS</span>
-              <span class="tech-tag">JS</span>
             </div>
             <div class="project-btns">
               <a href="https://github.com/tahmidalvee6/Projects/tree/main/Web-Development-Projects/Food-Delivery-Website" target="_blank" class="project-btn-outline">
@@ -494,7 +414,6 @@
             <div class="project-tech">
               <span class="tech-tag">HTML</span>
               <span class="tech-tag">CSS</span>
-              <span class="tech-tag">JS</span>
             </div>
             <div class="project-btns">
               <a href="https://github.com/tahmidalvee6" target="_blank" class="project-btn-outline">
@@ -552,7 +471,6 @@
             <div class="project-tech">
               <span class="tech-tag">HTML</span>
               <span class="tech-tag">CSS</span>
-              <span class="tech-tag">JS</span>
             </div>
             <div class="project-btns">
               <a href="https://github.com/tahmidalvee6/Solar-System" target="_blank" class="project-btn-outline">
@@ -576,158 +494,6 @@
     </div>
   </section>
 
-  <!-- ACHIEVEMENTS -->
-  <section class="achievements" id="achievements">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Achievements & Certifications</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="certificates-grid">
-        <div class="cert-card">
-          <div class="cert-image-wrapper">
-            <img src="assets/images/cpp_cert.png" alt="C++ Bootcamp Certificate" class="cert-img" />
-          </div>
-          <div class="cert-body">
-            <h3 class="cert-title">C++ Programming & Problem-Solving Bootcamp</h3>
-            <p class="cert-sub">Mastered skills including:</p>
-            <ul class="cert-points">
-              <li>Advanced C++ Concepts</li>
-              <li>Data Structures & Algorithms</li>
-              <li>Competitive Problem Solving</li>
-            </ul>
-            <a href="assets/certificates/C++_Bootcamp_Certificate.pdf" download class="cert-download-btn">
-              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-              Download Certificate
-            </a>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-image-wrapper">
-            <img src="assets/images/ai_cert.png" alt="AI Automation Certificate" class="cert-img" />
-          </div>
-          <div class="cert-body">
-            <h3 class="cert-title">AI Automation for Work & Business</h3>
-            <p class="cert-sub">Professional training covering:</p>
-            <ul class="cert-points">
-              <li>AI Workflow Automation</li>
-              <li>Business Productivity Tools</li>
-              <li>Real-World AI Applications</li>
-            </ul>
-            <a href="assets/certificates/ai-automation.pdf" download class="cert-download-btn">
-              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-              Download Certificate
-            </a>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-image-wrapper">
-            <img src="assets/images/robo_genesis.jpg" alt="Robo Genesis Certificate" class="cert-img" />
-          </div>
-          <div class="cert-body">
-            <h3 class="cert-title">Robo Genesis — Line Following & Robo Soccer Workshop</h3>
-            <p class="cert-sub">Actively participated in:</p>
-            <ul class="cert-points">
-              <li>2-Day Workshop on Line Following & Robo Soccer</li>
-              <li>Organized by IIUC EEE Club & IEEE IIUC Student Branch</li>
-              <li>Held on 26th-27th May 2025</li>
-            </ul>
-            <a href="assets/certificates/robo_genesis.pdf" download="Tahmid_Alvee_RoboGenesis_Certificate.jpg" class="cert-download-btn">
-              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-              Download Certificate
-            </a>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-image-wrapper">
-            <img src="assets/images/tech_fest.jpg" alt="IIUC Tech Fest Certificate" class="cert-img" />
-          </div>
-          <div class="cert-body">
-            <h3 class="cert-title">IIUC Tech Fest 2025 — Deep Learning Seminar</h3>
-            <p class="cert-sub">Actively participated in:</p>
-            <ul class="cert-points">
-              <li>The Role of Deep Learning in Biomedical Image Analysis</li>
-              <li>Seminar by IEEE Computer Society IIUC Student Branch</li>
-              <li>Held at IIUC Central Auditorium</li>
-            </ul>
-            <a href="assets/certificates/techfest_cert.pdf" download="Tahmid_Alvee_TechFest_Certificate.jpg" class="cert-download-btn">
-              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-              Download Certificate
-            </a>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-image-wrapper">
-            <img src="assets/images/NASA_cert.png" alt="NASA Certificate" class="cert-img" />
-          </div>
-          <div class="cert-body">
-            <h3 class="cert-title">NASA International Space Apps Challenge 2024</h3>
-            <p class="cert-sub">Demonstrated skills and contributions in:</p>
-            <ul class="cert-points">
-              <li>Space-Related Problem Solving</li>
-              <li>Team Collaboration</li>
-              <li>Innovative Solution Development</li>
-            </ul>
-            <a href="assets/certificates/NASA_Hackathon_Certificate.pdf" download class="cert-download-btn">
-              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-              Download Certificate
-            </a>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-image-wrapper">
-            <img src="assets/images/devops.jpeg" alt="Dev & DevOps Certificate" class="cert-img" />
-          </div>
-          <div class="cert-body">
-            <h3 class="cert-title">Dev & DevOps: A Roadmap for Aspiring Developers & DevOps Engineers</h3>
-            <p class="cert-sub">Participated in seminar covering:</p>
-            <ul class="cert-points">
-              <li>Development & DevOps Roadmap</li>
-              <li>Organized by IEEE Computer Society IIUC Student Branch</li>
-              <li>Held on 4th May 2024 at IIUC Central Auditorium</li>
-            </ul>
-            <a href="assets/certificates/devops.pdf" download="Tahmid_Alvee_DevOps_Certificate.jpg" class="cert-download-btn">
-              <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-              Download Certificate
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="experience-section">
-        <h3>Experience & Volunteering</h3>
-        <div class="experience-grid">
-          <div class="experience-card">
-            <div class="experience-header">
-              <div class="experience-icon">💻</div>
-              <div class="experience-info">
-                <h4>Developer - Personal Projects</h4>
-                <p class="experience-period">Jan 2024 - Present</p>
-              </div>
-            </div>
-            <ul class="experience-list">
-              <li>Built multiple projects using C++, Java, Python, and web technologies</li>
-              <li>Collaborated with peers on open-source contributions</li>
-              <li>Practiced version control and collaborative development using Git & GitHub</li>
-            </ul>
-          </div>
-          <div class="experience-card">
-            <div class="experience-header">
-              <div class="experience-icon">🎤</div>
-              <div class="experience-info">
-                <h4>Event Organizer - Volunteer Work</h4>
-                <p class="experience-period">Jan 2024 - Present</p>
-              </div>
-            </div>
-            <ul class="experience-list">
-              <li>Organized technical and community events</li>
-              <li>Participated in sustainability-focused initiatives</li>
-              <li>Contributed to creating inclusive tech communities</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
@@ -814,7 +580,7 @@
           </div>
         </div>
         <div class="contact-form-wrapper">
-          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <form class="contact-form" action="#" method="POST">
             <div class="form-group">
               <label for="name">Your Name</label>
               <input type="text" id="name" name="name" required />
@@ -840,44 +606,6 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-glow-line"></div>
-      <div class="footer-main">
-        <div class="footer-brand">
-          <span class="footer-bracket">&lt;</span>
-          <span class="footer-name">Tahmid Alvee</span>
-          <span class="footer-bracket">/&gt;</span>
-        </div>
-        <p class="footer-tagline">MERN-Stack Developer</p>
-        <nav class="footer-nav">
-          <a href="#home" class="footer-nav-link">Home</a>
-          <a href="#about" class="footer-nav-link">About</a>
-          <a href="#skills" class="footer-nav-link">Skills</a>
-          <a href="#projects" class="footer-nav-link">Projects</a>
-          <a href="#achievements" class="footer-nav-link">Achievements</a>
-          <a href="#contact" class="footer-nav-link">Contact</a>
-        </nav>
-        <div class="footer-socials">
-          <a href="https://github.com/tahmidalvee6" target="_blank" class="footer-social-icon" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/tahmid-alvee-300a9729a/" target="_blank" class="footer-social-icon" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          </a>
-          <a href="https://codeforces.com/profile/tahmid_alvee_06" target="_blank" class="footer-social-icon" aria-label="Codeforces">
-            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.672 21 0 20.328 0 19.5V9c0-.828.672-1.5 1.5-1.5h3zm9-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-15c0-.828.672-1.5 1.5-1.5h3zm9 7.5c.828 0 1.5.672 1.5 1.5v7.5c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V12c0-.828.672-1.5 1.5-1.5h3z"/></svg>
-          </a>
-          <a href="https://leetcode.com/u/tahmidalveeofficial6/" target="_blank" class="footer-social-icon" aria-label="LeetCode">
-            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/tahmid._.alvee" target="_blank" class="footer-social-icon" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.428.403a4.92 4.92 0 0 1 1.77 1.004 4.92 4.92 0 0 1 1.004 1.77c.163.458.347 1.258.403 2.428.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.403 2.428a4.902 4.902 0 0 1-1.004 1.77 4.902 4.902 0 0 1-1.77 1.004c-.458.163-1.258.347-2.428.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.428-.403a4.902 4.902 0 0 1-1.77-1.004 4.902 4.902 0 0 1-1.004-1.77c-.163-.458-.347-1.258-.403-2.428C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.97.403-2.428a4.92 4.92 0 0 1 1.004-1.77 4.92 4.92 0 0 1 1.77-1.004c.458-.163 1.258-.347 2.428-.403C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.772.13 4.845.322 4.042.635c-.836.347-1.54.807-2.236 1.504a6.897 6.897 0 0 0-1.504 2.236C.322 5.155.13 6.082.072 7.362.014 8.641 0 9.051 0 12s.014 3.359.072 4.638c.058 1.28.25 2.207.563 3.01.347.836.807 1.54 1.504 2.236a6.897 6.897 0 0 0 2.236 1.504c.803.313 1.73.505 3.01.563C8.641 23.986 9.051 24 12 24s3.359-.014 4.638-.072c1.28-.058 2.207-.25 3.01-.563a6.897 6.897 0 0 0 2.236-1.504 6.897 6.897 0 0 0 1.504-2.236c.313-.803.505-1.73.563-3.01.058-1.279.072-1.689.072-4.638s-.014-3.359-.072-4.638c-.058-1.28-.25-2.207-.563-3.01a6.897 6.897 0 0 0-1.504-2.236 6.897 6.897 0 0 0-2.236-1.504c-.803-.313-1.73-.505-3.01-.563C15.359.014 14.949 0 12 0z"/><circle fill="currentColor" cx="12" cy="12" r="3.5"/></svg>
-          </a>
-          <a href="https://www.facebook.com/share/16FKCb7Rsa/" target="_blank" class="footer-social-icon" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M22.675 0h-21.35C.592 0 0 .593 0 1.326v21.348C0 23.407.592 24 1.325 24H12.82v-9.294H9.692V11.03h3.128V8.414c0-3.1 1.893-4.788 4.657-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.796.715-1.796 1.763v2.312h3.587l-.467 3.676h-3.12V24h6.116c.733 0 1.325-.593 1.325-1.326V1.326C24 .593 23.408 0 22.675 0z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-divider"></div>
       <div class="footer-bottom">
         <p class="footer-copy">&copy; 2026 Tahmid Alvee. All Rights Reserved.</p>
       </div>
