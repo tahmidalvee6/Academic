@@ -83,3 +83,21 @@ int main() {
 
     return 0;
 }
+
+
+
+/*
+Input :
+#include <iostream>
+using namespace std;
+int main() {
+    int x = 10; // x value
+    int y = 20; // y value
+    /* calculate
+       the sum */
+    // int sum = x + y;
+    // int diff = x - y; // difference
+    // return 0;
+}
+END
+/*
