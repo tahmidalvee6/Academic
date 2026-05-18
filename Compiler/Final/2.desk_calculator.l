@@ -41,3 +41,21 @@ int main()
     yylex();
     return 0;
 }
+
+
+
+
+/*
+Example Input
+5+3
+10-2
+4*5
+20/4
+
+
+Output
+Result = 8
+Result = 8
+Result = 20
+Result = 5
+*/
