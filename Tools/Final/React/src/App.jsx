@@ -1,87 +1,79 @@
-import React, { useState, useEffect } from 'react';
-import Home from './Components/Home/Home';
-import About from './Components/About/About';
-import Contact from './Components/Contact/Contact';
-import Footer from './Components/Footer/Footer';
+import { useState } from "react";
 
-const App = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [menuOpen, setMenuOpen] = useState(false);
+export default function TodoApp() {
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState("");
 
-  const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' },
-  ];
+  function addTodo() {
+    if (!input.trim()) return;
+    setTodos([...todos, { id: Date.now(), text: input.trim(), done: false }]);
+    setInput("");
+  }
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-    setMenuOpen(false);
-    setActiveSection(id);
-  };
+  function toggleTodo(id) {
+    setTodos(todos.map(t => t.id === id ? { ...t, done: !t.done } : t));
+  }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      navLinks.forEach(({ id }) => {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 80 && rect.bottom >= 80) {
-            setActiveSection(id);
-          }
-        }
-      });
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  function deleteTodo(id) {
+    setTodos(todos.filter(t => t.id !== id));
+  }
 
   return (
-    <div style={{ fontFamily: 'Georgia, serif', minHeight: '100vh' }}>
+    <div style={{ maxWidth: 480, margin: "2rem auto", padding: "0 1rem", fontFamily: "sans-serif" }}>
+      <h1 style={{ fontSize: 24, marginBottom: "1.5rem" }}>✅ My Todo List</h1>
 
-      {/* Navbar */}
-      <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-        background: '#1a1a2e', padding: '0 2rem',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        height: '64px', boxShadow: '0 2px 12px rgba(0,0,0,0.3)'
-      }}>
-        <div style={{ color: '#f0c040', fontWeight: 'bold', fontSize: '1.4rem', letterSpacing: '1px' }}>
-          Kamal &amp; Sons
+      {/* Input row */}
+      <div style={{ display: "flex", gap: 8, marginBottom: "1.5rem" }}>
+        <input
+          type="text"
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => e.key === "Enter" && addTodo()}
+          placeholder="Add a new task..."
+          style={{ flex: 1, padding: "8px 12px", fontSize: 15, borderRadius: 8, border: "1px solid #ccc" }}
+        />
+        <button
+          onClick={addTodo}
+          style={{ padding: "8px 16px", borderRadius: 8, border: "1px solid #ccc", cursor: "pointer" }}
+        >
+          Add
+        </button>
+      </div>
+
+      {/* Todo list */}
+      {todos.length === 0 && (
+        <p style={{ textAlign: "center", color: "#888" }}>No tasks yet. Add one above!</p>
+      )}
+
+      {todos.map(todo => (
+        <div
+          key={todo.id}
+          style={{
+            display: "flex", alignItems: "center", gap: 10,
+            padding: "10px 14px", marginBottom: 8,
+            border: "1px solid #ddd", borderRadius: 8,
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={todo.done}
+            onChange={() => toggleTodo(todo.id)}
+          />
+          <span style={{
+            flex: 1, fontSize: 15,
+            textDecoration: todo.done ? "line-through" : "none",
+            color: todo.done ? "#aaa" : "#000",
+          }}>
+            {todo.text}
+          </span>
+          <button
+            onClick={() => deleteTodo(todo.id)}
+            style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, color: "#aaa" }}
+          >
+            ×
+          </button>
         </div>
-
-        {/* Desktop nav */}
-        <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
-          {navLinks.map(({ id, label }) => (
-            <li key={id}>
-              <button
-                onClick={() => scrollToSection(id)}
-                style={{
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  color: activeSection === id ? '#f0c040' : '#ccc',
-                  fontSize: '1rem', fontFamily: 'inherit',
-                  borderBottom: activeSection === id ? '2px solid #f0c040' : '2px solid transparent',
-                  paddingBottom: '2px', transition: 'all 0.2s'
-                }}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* Main content — each section gets an id for scroll targeting */}
-      <main style={{ paddingTop: '64px' }}>
-        <section id="home"><Home /></section>
-        <section id="about"><About /></section>
-        <section id="contact"><Contact /></section>
-      </main>
-
-      <Footer />
+      ))}
     </div>
   );
-};
-
-export default App;
+}
