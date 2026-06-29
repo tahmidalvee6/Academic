@@ -228,6 +228,7 @@ int main()
 
 
 
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -236,7 +237,7 @@ int main()
 
 using namespace std;
 
-// Remove Comments
+// Remove comments
 string removeComments(string code)
 {
     string result;
@@ -249,12 +250,10 @@ string removeComments(string code)
             while (i < code.length() && code[i] != '\n')
                 i++;
         }
-
         // Multi-line comment
         else if (code[i] == '/' && i + 1 < code.length() && code[i + 1] == '*')
         {
             i += 2;
-
             while (i + 1 < code.length())
             {
                 if (code[i] == '*' && code[i + 1] == '/')
@@ -265,7 +264,6 @@ string removeComments(string code)
                 i++;
             }
         }
-
         else
         {
             result += code[i];
@@ -289,6 +287,58 @@ bool isOperator(char ch)
     return op.find(ch) != string::npos;
 }
 
+// Check keyword
+bool isKeyword(string str)
+{
+    string keywords[] = {
+        "int", "float", "double", "char", "void",
+        "if", "else", "for", "while", "return",
+        "break", "continue", "do", "switch", "case",
+        "default", "long", "short", "const"
+    };
+
+    for (string k : keywords)
+    {
+        if (str == k)
+            return true;
+    }
+
+    return false;
+}
+
+// Check number
+bool isNumber(string str)
+{
+    if (str.empty())
+        return false;
+
+    for (char c : str)
+    {
+        if (!isdigit(c))
+            return false;
+    }
+
+    return true;
+}
+
+// Check identifier
+bool isIdentifier(string str)
+{
+    if (str.empty())
+        return false;
+
+    if (!(isalpha(str[0]) || str[0] == '_'))
+        return false;
+
+    for (char c : str)
+    {
+        if (!(isalnum(c) || c == '_'))
+            return false;
+    }
+
+    return true;
+}
+
 // Tokenizer
 void tokenize(string code)
 {
@@ -305,7 +355,6 @@ void tokenize(string code)
                 token = "";
             }
         }
-
         else if (isSeparator(ch) || isOperator(ch))
         {
             if (!token.empty())
@@ -318,7 +367,6 @@ void tokenize(string code)
             temp += ch;
             tokens.push_back(temp);
         }
-
         else
         {
             token += ch;
@@ -328,11 +376,29 @@ void tokenize(string code)
     if (!token.empty())
         tokens.push_back(token);
 
-    cout << "\nTokens:\n\n";
+    cout << "\n----------------------------------------\n";
+    cout << "Token Name\t\tToken Value\n";
+    cout << "----------------------------------------\n";
 
     for (string t : tokens)
     {
-        cout << t << endl;
+        if (isKeyword(t))
+            cout << "Keyword\t\t\t" << t << endl;
+
+        else if (isIdentifier(t))
+            cout << "Identifier\t\t" << t << endl;
+
+        else if (isNumber(t))
+            cout << "Number\t\t\t" << t << endl;
+
+        else if (t.length() == 1 && isOperator(t[0]))
+            cout << "Operator\t\t" << t << endl;
+
+        else if (t.length() == 1 && isSeparator(t[0]))
+            cout << "Separator\t\t" << t << endl;
+
+        else
+            cout << "Preprocessor\t\t\t" << t << endl;
     }
 }
 
@@ -364,7 +430,6 @@ int main()
 
     return 0;
 }
-
 
 
 */
