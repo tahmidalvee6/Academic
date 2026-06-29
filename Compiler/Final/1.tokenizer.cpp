@@ -204,3 +204,167 @@ END
   [
   ]
 */
+
+
+
+/*
+#include <stdio.h>
+
+// This is a single line comment
+
+int main()
+{
+    /* Multi-line
+       Comment */
+
+    int a, c = 10;
+    int b = 15;
+    a = b + c;
+
+    printf("%d", a);
+
+    return 0;
+}
+
+
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <cctype>
+
+using namespace std;
+
+// Remove Comments
+string removeComments(string code)
+{
+    string result;
+
+    for (int i = 0; i < code.length(); i++)
+    {
+        // Single-line comment
+        if (code[i] == '/' && i + 1 < code.length() && code[i + 1] == '/')
+        {
+            while (i < code.length() && code[i] != '\n')
+                i++;
+        }
+
+        // Multi-line comment
+        else if (code[i] == '/' && i + 1 < code.length() && code[i + 1] == '*')
+        {
+            i += 2;
+
+            while (i + 1 < code.length())
+            {
+                if (code[i] == '*' && code[i + 1] == '/')
+                {
+                    i++;
+                    break;
+                }
+                i++;
+            }
+        }
+
+        else
+        {
+            result += code[i];
+        }
+    }
+
+    return result;
+}
+
+// Check separator
+bool isSeparator(char ch)
+{
+    string sep = "(){}[],;";
+    return sep.find(ch) != string::npos;
+}
+
+// Check operator
+bool isOperator(char ch)
+{
+    string op = "+-*/=%<>!";
+    return op.find(ch) != string::npos;
+}
+
+// Tokenizer
+void tokenize(string code)
+{
+    vector<string> tokens;
+    string token = "";
+
+    for (char ch : code)
+    {
+        if (isspace(ch))
+        {
+            if (!token.empty())
+            {
+                tokens.push_back(token);
+                token = "";
+            }
+        }
+
+        else if (isSeparator(ch) || isOperator(ch))
+        {
+            if (!token.empty())
+            {
+                tokens.push_back(token);
+                token = "";
+            }
+
+            string temp;
+            temp += ch;
+            tokens.push_back(temp);
+        }
+
+        else
+        {
+            token += ch;
+        }
+    }
+
+    if (!token.empty())
+        tokens.push_back(token);
+
+    cout << "\nTokens:\n\n";
+
+    for (string t : tokens)
+    {
+        cout << t << endl;
+    }
+}
+
+int main()
+{
+    ifstream file("input.c");
+
+    if (!file)
+    {
+        cout << "Cannot open input.c";
+        return 0;
+    }
+
+    string code, line;
+
+    while (getline(file, line))
+    {
+        code += line + "\n";
+    }
+
+    file.close();
+
+    string cleanedCode = removeComments(code);
+
+    cout << "Code After Removing Comments:\n\n";
+    cout << cleanedCode << endl;
+
+    tokenize(cleanedCode);
+
+    return 0;
+}
+
+
+
+*/
