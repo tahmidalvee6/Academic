@@ -1,3 +1,4 @@
+#include <iostream>   
 #include <vector>
 #include <string>
 using namespace std;
@@ -61,4 +62,17 @@ vector<string> eliminateLeftRecursion(const vector<string>& productions)
     }
 
     return result;
+}
+
+int main()
+{
+    vector<string> productions = { "A->A+B|B" };
+
+    vector<string> result = eliminateLeftRecursion(productions);
+
+    cout << "Output:" << endl;
+    for (const string& r : result)
+        cout << r << endl;
+
+    return 0;
 }
