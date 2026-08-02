@@ -1,3 +1,4 @@
+#include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -5,7 +6,6 @@ using namespace std;
 vector<string> leftFactor(const vector<string>& productions)
 {
     vector<string> result;
-
     for (const string& rule : productions)
     {
         size_t pos = rule.find("->");
@@ -14,13 +14,10 @@ vector<string> leftFactor(const vector<string>& productions)
             result.push_back(rule);
             continue;
         }
-
         string lhs = rule.substr(0, pos);
         string rhs = rule.substr(pos + 2);
-
         vector<string> parts;
         string current;
-
         for (size_t i = 0; i <= rhs.size(); i++)
         {
             if (i == rhs.size() || rhs[i] == '|')
@@ -33,14 +30,12 @@ vector<string> leftFactor(const vector<string>& productions)
                 current += rhs[i];
             }
         }
-
         // need at least 2 alternatives to factor anything
         if (parts.size() < 2)
         {
             result.push_back(rule);
             continue;
         }
-
         string common = parts[0];
         for (size_t i = 1; i < parts.size(); i++)
         {
@@ -49,7 +44,6 @@ vector<string> leftFactor(const vector<string>& productions)
                 j++;
             common = common.substr(0, j);
         }
-
         if (common.empty())
         {
             result.push_back(rule);
@@ -58,7 +52,6 @@ vector<string> leftFactor(const vector<string>& productions)
         {
             string prime = lhs + "'";
             result.push_back(lhs + "->" + common + prime);
-
             string second = prime + "->";
             for (size_t i = 0; i < parts.size(); i++)
             {
@@ -70,6 +63,18 @@ vector<string> leftFactor(const vector<string>& productions)
             result.push_back(second);
         }
     }
-
     return result;
+}
+
+int main()
+{
+    vector<string> productions = { "A->aB|aC|aD" };
+
+    vector<string> result = leftFactor(productions);
+
+    cout << "Output:" << endl;
+    for (const string& r : result)
+        cout << r << endl;
+
+    return 0;
 }
