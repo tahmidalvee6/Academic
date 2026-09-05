@@ -94,3 +94,63 @@ int main() {
 
     return 0;
 }
+
+
+
+
+/*
+Enter number of processes: 4
+Enter Arrival Time and Burst Time for P1: 0 7
+Enter Arrival Time and Burst Time for P2: 2 4
+Enter Arrival Time and Burst Time for P3: 4 1
+Enter Arrival Time and Burst Time for P4: 5 4
+
+Non-Preemptive SJF
+P1: 
+CT=7
+TAT=7
+WT=0
+
+P2: 
+CT=12
+TAT=10
+WT=6
+
+P3: 
+CT=8
+TAT=4
+WT=3
+
+P4: 
+CT=16
+TAT=11
+WT=7
+
+Avg WT = 4
+Avg TAT = 8
+
+Preemptive SJF
+P1: 
+CT=16
+TAT=16
+WT=9
+
+P2: 
+CT=7
+TAT=5
+WT=1
+
+P3: 
+CT=5
+TAT=1
+WT=0
+
+P4: 
+CT=11
+TAT=6
+WT=2
+
+Avg WT = 3
+Avg TAT = 7
+
+*/
