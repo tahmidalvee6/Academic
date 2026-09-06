@@ -14,7 +14,9 @@ int main() {
 
     // Non-Preemptive SJF 
     int bt1[20], ct1[20], tat1[20], wt1[20];
-    for (int i = 0; i < n; i++) bt1[i] = bt[i];
+    for (int i = 0; i < n; i++) {
+        bt1[i] = bt[i];
+    }
 
     int time1 = 0, finished1 = 0;
     while (finished1 < n) {
@@ -27,7 +29,8 @@ int main() {
         }
         if (idx == -1) {
             time1++;
-        } else {
+        } 
+        else {
             time1 += bt1[idx];
             ct1[idx] = time1;
             tat1[idx] = ct1[idx] - at[idx];
@@ -53,7 +56,9 @@ int main() {
 
     // -Preemptive SJF 
     int rt2[20], ct2[20], tat2[20], wt2[20];
-    for (int i = 0; i < n; i++) rt2[i] = bt[i];
+    for (int i = 0; i < n; i++) {
+        rt2[i] = bt[i];
+    }
 
     int time2 = 0, finished2 = 0;
     while (finished2 < n) {
@@ -66,7 +71,8 @@ int main() {
         }
         if (idx == -1) {
             time2++;
-        } else {
+        } 
+        else {
             rt2[idx]--;
             time2++;
             if (rt2[idx] == 0) {
