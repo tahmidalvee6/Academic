@@ -26,7 +26,7 @@ This repository stores and organizes all my academic materials — course notes,
 
 Currently in **5th Semester** of my university studies.
 
-✅ Semester 1 &nbsp;|&nbsp; ✅ Semester 2 &nbsp;|&nbsp; ✅ Semester 3 &nbsp;|&nbsp; ✅ Semester 4 &nbsp;|&nbsp; 🔄 Semester 5
+✅ Semester 1 &nbsp;|&nbsp; ✅ Semester 2 &nbsp;|&nbsp; ✅ Semester 3 &nbsp;|&nbsp; ✅ Semester 4 &nbsp;|&nbsp; ✅ Semester 5 &nbsp;|&nbsp; 🔄 Semester 6 
 
 ---
 
