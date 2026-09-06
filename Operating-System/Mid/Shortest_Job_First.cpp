@@ -160,3 +160,124 @@ Avg WT = 3
 Avg TAT = 7
 
 */
+
+
+
+
+
+
+/*
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+
+    cout << "Enter number of processes: ";
+    cin >> n;
+
+    int pid[100];
+    int bt[100];
+    int ct[100];
+    int tat[100];
+    int wt[100];
+
+    // Input
+    for(int i = 0; i < n; i++)
+    {
+        pid[i] = i + 1;
+
+        cout << "Enter Burst Time for P" << pid[i] << ": ";
+        cin >> bt[i];
+    }
+
+
+    // -----------------------------------------
+    // TODO 1:
+    // Sort the processes according to
+    // Burst Time (Shortest Job First)
+    // -----------------------------------------
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (bt[j] > bt[j + 1]) {
+                // swap burst time
+                int temp = bt[j];
+                bt[j] = bt[j + 1];
+                bt[j + 1] = temp;
+
+                // swap process id (matched with its burst time)
+                int tempId = pid[j];
+                pid[j] = pid[j + 1];
+                pid[j + 1] = tempId;
+            }
+        }
+    }
+
+
+    // Calculate Completion Time
+    ct[0] = bt[0];
+
+    for(int i = 1; i < n; i++)
+    {
+        // TODO 2:
+        // Calculate Completion Time
+        ct[i] = ct[i - 1] + bt[i];
+    }
+
+
+    // Calculate Turnaround Time
+    for(int i = 0; i < n; i++)
+    {
+        // TODO 3:
+        // TAT = CT (because Arrival Time = 0)
+        tat[i] = ct[i];
+    }
+
+
+    // Calculate Waiting Time
+    for(int i = 0; i < n; i++)
+    {
+        // TODO 4:
+        // WT = TAT - BT
+        wt[i] = tat[i] - bt[i];
+    }
+
+
+    // Display result
+    cout << "\nPID\tBT\tCT\tTAT\tWT\n";
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << "P" << pid[i] << "\t"
+             << bt[i] << "\t"
+             << ct[i] << "\t"
+             << tat[i] << "\t"
+             << wt[i] << endl;
+    }
+
+
+    // Average Waiting Time
+    // TODO 5:
+    // Calculate and display average waiting time
+    int sumWT = 0;
+    for (int i = 0; i < n; i++) {
+        sumWT += wt[i];
+    }
+    cout << "\nAverage Waiting Time = " << (float)sumWT / n << endl;
+
+
+    // Average Turnaround Time
+    // TODO 6:
+    // Calculate and display average turnaround time
+    int sumTAT = 0;
+    for (int i = 0; i < n; i++) {
+        sumTAT += tat[i];
+    }
+    cout << "Average Turnaround Time = " << (float)sumTAT / n << endl;
+
+
+    return 0;
+}
+
+*/
