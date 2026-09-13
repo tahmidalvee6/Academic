@@ -48,7 +48,9 @@ int main() {
     cout<<"Gantt Chart Order: ";
     for (int i = 0; i < orderCount1; i++) {
         cout<<"P"<<order1[i] + 1;
-        if (i != orderCount1 - 1) cout<<" -> ";
+        if (i != orderCount1 - 1) {
+            cout<<" -> ";
+        }
     }
     cout<<endl<<endl;
 
