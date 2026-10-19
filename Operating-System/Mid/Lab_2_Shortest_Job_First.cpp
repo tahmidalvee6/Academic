@@ -14,6 +14,7 @@ int main() {
 
     // Non-Preemptive SJF 
     int bt1[20], ct1[20], tat1[20], wt1[20];
+    int order1[100], cnt1 = 0;
     for (int i = 0; i < n; i++) {
         bt1[i] = bt[i];
     }
@@ -28,9 +29,11 @@ int main() {
             }
         }
         if (idx == -1) {
+            if (cnt1 == 0 || order1[cnt1 - 1] != 0) order1[cnt1++] = 0;
             time1++;
         } 
         else {
+            order1[cnt1++] = idx + 1;
             time1 += bt1[idx];
             ct1[idx] = time1;
             tat1[idx] = ct1[idx] - at[idx];
@@ -41,6 +44,13 @@ int main() {
     }
 
     cout<<endl<<"Non-Preemptive SJF"<<endl;
+    cout<<"Execution Order: ";
+    for (int i = 0; i < cnt1; i++) {
+        if (order1[i] == 0) cout<<"Idle";
+        else cout<<"P"<<order1[i];
+        if (i != cnt1 - 1) cout<<" -> ";
+    }
+    cout<<endl<<endl;
     int sumWT1 = 0, sumTAT1 = 0;
     for (int i = 0; i < n; i++) {
         cout<<"P"<< i + 1<< ": "<<endl;
@@ -56,6 +66,7 @@ int main() {
 
     // -Preemptive SJF 
     int rt2[20], ct2[20], tat2[20], wt2[20];
+    int order2[100], cnt2 = 0;
     for (int i = 0; i < n; i++) {
         rt2[i] = bt[i];
     }
@@ -70,9 +81,11 @@ int main() {
             }
         }
         if (idx == -1) {
+            if (cnt2 == 0 || order2[cnt2 - 1] != 0) order2[cnt2++] = 0;
             time2++;
         } 
         else {
+            if (cnt2 == 0 || order2[cnt2 - 1] != idx + 1) order2[cnt2++] = idx + 1;
             rt2[idx]--;
             time2++;
             if (rt2[idx] == 0) {
@@ -85,6 +98,13 @@ int main() {
     }
 
     cout<<endl<<"Preemptive SJF"<<endl;
+    cout<<"Execution Order: ";
+    for (int i = 0; i < cnt2; i++) {
+        if (order2[i] == 0) cout<<"Idle";
+        else cout<<"P"<<order2[i];
+        if (i != cnt2 - 1) cout<<" -> ";
+    }
+    cout<<endl<<endl;
     int sumWT2 = 0, sumTAT2 = 0;
     for (int i = 0; i < n; i++) {
         cout<<"P"<< i + 1<< ": "<<endl;
@@ -112,6 +132,8 @@ Enter Arrival Time and Burst Time for P3: 4 1
 Enter Arrival Time and Burst Time for P4: 5 4
 
 Non-Preemptive SJF
+Execution Order: P1 -> P3 -> P2 -> P4
+
 P1: 
 CT=7
 TAT=7
@@ -136,6 +158,8 @@ Avg WT = 4
 Avg TAT = 8
 
 Preemptive SJF
+Execution Order: P1 -> P2 -> P3 -> P2 -> P4 -> P1
+
 P1: 
 CT=16
 TAT=16
@@ -166,118 +190,5 @@ Avg TAT = 7
 
 
 
-/*
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int n;
-
-    cout << "Enter number of processes: ";
-    cin >> n;
-
-    int pid[100];
-    int bt[100];
-    int ct[100];
-    int tat[100];
-    int wt[100];
-
-    // Input
-    for(int i = 0; i < n; i++)
-    {
-        pid[i] = i + 1;
-
-        cout << "Enter Burst Time for P" << pid[i] << ": ";
-        cin >> bt[i];
-    }
 
 
-    // -----------------------------------------
-    // TODO 1:
-    // Sort the processes according to
-    // Burst Time (Shortest Job First)
-    // -----------------------------------------
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (bt[j] > bt[j + 1]) {
-                // swap burst time
-                int temp = bt[j];
-                bt[j] = bt[j + 1];
-                bt[j + 1] = temp;
-
-                // swap process id (matched with its burst time)
-                int tempId = pid[j];
-                pid[j] = pid[j + 1];
-                pid[j + 1] = tempId;
-            }
-        }
-    }
-
-
-    // Calculate Completion Time
-    ct[0] = bt[0];
-
-    for(int i = 1; i < n; i++)
-    {
-        // TODO 2:
-        // Calculate Completion Time
-        ct[i] = ct[i - 1] + bt[i];
-    }
-
-
-    // Calculate Turnaround Time
-    for(int i = 0; i < n; i++)
-    {
-        // TODO 3:
-        // TAT = CT (because Arrival Time = 0)
-        tat[i] = ct[i];
-    }
-
-
-    // Calculate Waiting Time
-    for(int i = 0; i < n; i++)
-    {
-        // TODO 4:
-        // WT = TAT - BT
-        wt[i] = tat[i] - bt[i];
-    }
-
-
-    // Display result
-    cout << "\nPID\tBT\tCT\tTAT\tWT\n";
-
-    for(int i = 0; i < n; i++)
-    {
-        cout << "P" << pid[i] << "\t"
-             << bt[i] << "\t"
-             << ct[i] << "\t"
-             << tat[i] << "\t"
-             << wt[i] << endl;
-    }
-
-
-    // Average Waiting Time
-    // TODO 5:
-    // Calculate and display average waiting time
-    int sumWT = 0;
-    for (int i = 0; i < n; i++) {
-        sumWT += wt[i];
-    }
-    cout << "\nAverage Waiting Time = " << (float)sumWT / n << endl;
-
-
-    // Average Turnaround Time
-    // TODO 6:
-    // Calculate and display average turnaround time
-    int sumTAT = 0;
-    for (int i = 0; i < n; i++) {
-        sumTAT += tat[i];
-    }
-    cout << "Average Turnaround Time = " << (float)sumTAT / n << endl;
-
-
-    return 0;
-}
-
-*/
