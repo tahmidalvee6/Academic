@@ -1,5 +1,3 @@
-// Non preemptive 
-
 #include <iostream>
 using namespace std;
 
@@ -69,6 +67,65 @@ int main() {
     cout<<"Avg WT = "<<(float)sumWT1 / n<<endl;
     cout<<"Avg TAT = "<<(float)sumTAT1 / n<<endl;
 
+    // Preemptive Priority
+    int rt2[20], ct2[20], tat2[20], wt2[20];
+    int order2[100], orderCount2 = 0;
+    for (int i = 0; i < n; i++) {
+        rt2[i] = bt[i];
+    }
+
+    int time2 = 0, finished2 = 0;
+    while (finished2 < n) {
+        int idx = -1, minPR = 9999;
+        for (int i = 0; i < n; i++) {
+            if (rt2[i] > 0 && at[i] <= time2) {
+                if (pr[i] < minPR || (pr[i] == minPR && at[i] < at[idx])) {
+                    minPR = pr[i];
+                    idx = i;
+                }
+            }
+        }
+        if (idx == -1) {
+            time2++;
+        } 
+        else {
+            if (orderCount2 == 0 || order2[orderCount2 - 1] != idx) {
+                order2[orderCount2++] = idx;
+            }
+            rt2[idx]--;
+            time2++;
+            if (rt2[idx] == 0) {
+                ct2[idx] = time2;
+                tat2[idx] = ct2[idx] - at[idx];
+                wt2[idx] = tat2[idx] - bt[idx];
+                finished2++;
+            }
+        }
+    }
+
+    cout<<endl<<"Preemptive Priority"<<endl;
+    cout<<"Gantt Chart Order: ";
+    for (int i = 0; i < orderCount2; i++) {
+        cout<<"P"<<order2[i] + 1;
+        if (i != orderCount2 - 1) {
+            cout<<" -> ";
+        }
+    }
+    cout<<endl<<endl;
+
+    int sumWT2 = 0, sumTAT2 = 0;
+    for (int i = 0; i < n; i++) {
+        cout<<"P"<< i + 1<< ": "<<endl;
+        cout<<"CT="<< ct2[i]<<endl;
+        cout<<"TAT="<< tat2[i]<<endl;
+        cout<<"WT="<< wt2[i]<<endl;
+        cout<<endl;
+        sumWT2 += wt2[i];
+        sumTAT2 += tat2[i];
+    }
+    cout<<"Avg WT = "<<(float)sumWT2 / n<<endl;
+    cout<<"Avg TAT = "<<(float)sumTAT2 / n<<endl;
+
     return 0;
 }
 
@@ -83,7 +140,6 @@ Enter Arrival Time, Burst Time and Priority for P3: 5 1 3
 Enter Arrival Time, Burst Time and Priority for P4: 4 7 4
 Enter Arrival Time, Burst Time and Priority for P5: 1 6 3
 Enter Arrival Time, Burst Time and Priority for P6: 0 2 5
-
 Non-Preemptive Priority
 Gantt Chart Order: P6 -> P2 -> P1 -> P5 -> P3 -> P4
 
@@ -119,5 +175,41 @@ WT=0
 
 Avg WT = 6.5
 Avg TAT = 10.6667
+
+Preemptive Priority
+Gantt Chart Order: P6 -> P5 -> P2 -> P1 -> P5 -> P3 -> P4 -> P6
+
+P1: 
+CT=11
+TAT=8
+WT=3
+
+P2: 
+CT=6
+TAT=4
+WT=0
+
+P3: 
+CT=17
+TAT=12
+WT=11
+
+P4: 
+CT=24
+TAT=20
+WT=13
+
+P5: 
+CT=16
+TAT=15
+WT=9
+
+P6: 
+CT=25
+TAT=25
+WT=23
+
+Avg WT = 9.83333
+Avg TAT = 14
 
 */
