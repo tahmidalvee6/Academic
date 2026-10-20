@@ -45,3 +45,42 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+/*
+Enter number of processes: 4
+Enter Arrival Time and Burst Time for P1: 0 7
+Enter Arrival Time and Burst Time for P2: 2 4
+Enter Arrival Time and Burst Time for P3: 4 1
+Enter Arrival Time and Burst Time for P4: 5 4
+
+FCFS Scheduling
+Execution Order: P1 -> P2 -> P3 -> P4
+
+P1:
+CT=7
+TAT=7
+WT=0
+
+P2:
+CT=11
+TAT=9
+WT=5
+
+P3:
+CT=12
+TAT=8
+WT=7
+
+P4:
+CT=16
+TAT=11
+WT=7
+
+Avg WT = 4.75
+Avg TAT = 8.75
+
+*/
