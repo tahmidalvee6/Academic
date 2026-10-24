@@ -57,9 +57,9 @@ Enter Arrival Time and Burst Time for P2: 2 4
 Enter Arrival Time and Burst Time for P3: 4 1
 Enter Arrival Time and Burst Time for P4: 5 4
 
-FCFS Scheduling
 Execution Order: P1 -> P2 -> P3 -> P4
 
+FCFS Scheduling
 P1:
 CT=7
 TAT=7
