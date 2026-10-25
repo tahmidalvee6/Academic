@@ -29,7 +29,9 @@ int main() {
             }
         }
         if (idx == -1) {
-            if (cnt1 == 0 || order1[cnt1 - 1] != 0) order1[cnt1++] = 0;
+            if (cnt1 == 0 || order1[cnt1 - 1] != 0) {
+                order1[cnt1++] = 0;
+            }
             time1++;
         } 
         else {
@@ -46,9 +48,15 @@ int main() {
     cout<<endl<<"Non-Preemptive SJF"<<endl;
     cout<<"Execution Order: ";
     for (int i = 0; i < cnt1; i++) {
-        if (order1[i] == 0) cout<<"Idle";
-        else cout<<"P"<<order1[i];
-        if (i != cnt1 - 1) cout<<" -> ";
+        if (order1[i] == 0) {
+            cout<<"Idle";
+        }
+        else {
+            cout<<"P"<<order1[i];
+        }
+        if (i != cnt1 - 1) {
+            cout<<" -> ";
+        }
     }
     cout<<endl<<endl;
     int sumWT1 = 0, sumTAT1 = 0;
@@ -81,11 +89,15 @@ int main() {
             }
         }
         if (idx == -1) {
-            if (cnt2 == 0 || order2[cnt2 - 1] != 0) order2[cnt2++] = 0;
+            if (cnt2 == 0 || order2[cnt2 - 1] != 0) {
+                order2[cnt2++] = 0;
+            }
             time2++;
         } 
         else {
-            if (cnt2 == 0 || order2[cnt2 - 1] != idx + 1) order2[cnt2++] = idx + 1;
+            if (cnt2 == 0 || order2[cnt2 - 1] != idx + 1) {
+                order2[cnt2++] = idx + 1;
+            }
             rt2[idx]--;
             time2++;
             if (rt2[idx] == 0) {
@@ -100,9 +112,15 @@ int main() {
     cout<<endl<<"Preemptive SJF"<<endl;
     cout<<"Execution Order: ";
     for (int i = 0; i < cnt2; i++) {
-        if (order2[i] == 0) cout<<"Idle";
-        else cout<<"P"<<order2[i];
-        if (i != cnt2 - 1) cout<<" -> ";
+        if (order2[i] == 0) {
+            cout<<"Idle";
+        }
+        else {
+            cout<<"P"<<order2[i];
+        }
+        if (i != cnt2 - 1) {
+            cout<<" -> ";
+        }
     }
     cout<<endl<<endl;
     int sumWT2 = 0, sumTAT2 = 0;
@@ -184,7 +202,6 @@ Avg WT = 3
 Avg TAT = 7
 
 */
-
 
 
 
