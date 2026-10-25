@@ -25,30 +25,55 @@ int main() {
     int time = 0, finished = 0;
     while (finished < n) {
         for (int i = 0; i < n; i++) {
-            if (at[i] <= time && !inQ[i] && rt[i] > 0) {
-                q[rear++] = i;
+            if (at[i] <= time && inQ[i] == false && rt[i] > 0) {
+                q[rear] = i;
+                rear++;
                 inQ[i] = true;
             }
         }
+
         if (front == rear) {
-            if (cnt == 0 || order[cnt - 1] != 0) order[cnt++] = 0;
+            if (cnt == 0 || order[cnt - 1] != 0) {
+                order[cnt] = 0;
+                cnt++;
+            }
             time++;
-        } 
+        }
         else {
-            int idx = q[front++];
-            if (cnt == 0 || order[cnt - 1] != idx + 1) order[cnt++] = idx + 1;
-            int run = (rt[idx] < tq) ? rt[idx] : tq;
-            time += run;
-            rt[idx] -= run;
+            int idx = q[front];
+            front++;
+
+            if (cnt == 0) {
+                order[cnt] = idx + 1;
+                cnt++;
+            }
+            else if (order[cnt - 1] != idx + 1) {
+                order[cnt] = idx + 1;
+                cnt++;
+            }
+
+            int run;
+            if (rt[idx] < tq) {
+                run = rt[idx];
+            } else {
+                run = tq;
+            }
+
+            time = time + run;
+            rt[idx] = rt[idx] - run;
+
             for (int i = 0; i < n; i++) {
-                if (at[i] <= time && !inQ[i] && rt[i] > 0) {
-                    q[rear++] = i;
+                if (at[i] <= time && inQ[i] == false && rt[i] > 0) {
+                    q[rear] = i;
+                    rear++;
                     inQ[i] = true;
                 }
             }
+
             if (rt[idx] > 0) {
-                q[rear++] = idx;
-            } 
+                q[rear] = idx;
+                rear++;
+            }
             else {
                 ct[idx] = time;
                 tat[idx] = ct[idx] - at[idx];
@@ -61,11 +86,17 @@ int main() {
     cout<<endl<<"Round Robin"<<endl;
     cout<<"Execution Order: ";
     for (int i = 0; i < cnt; i++) {
-        if (order[i] == 0) cout<<"Idle";
-        else cout<<"P"<<order[i];
-        if (i != cnt - 1) cout<<" -> ";
+        if (order[i] == 0) {
+            cout<<"Idle";
+        } else {
+            cout<<"P"<<order[i];
+        }
+        if (i != cnt - 1) {
+            cout<<" -> ";
+        }
     }
     cout<<endl<<endl;
+
     int sumWT = 0, sumTAT = 0;
     for (int i = 0; i < n; i++) {
         cout<<"P"<< i + 1<< ": "<<endl;
@@ -73,17 +104,14 @@ int main() {
         cout<<"TAT="<< tat[i]<<endl;
         cout<<"WT="<< wt[i]<<endl;
         cout<<endl;
-        sumWT += wt[i];
-        sumTAT += tat[i];
+        sumWT = sumWT + wt[i];
+        sumTAT = sumTAT + tat[i];
     }
     cout<<"Avg WT = "<<(float)sumWT / n<<endl;
     cout<<"Avg TAT = "<<(float)sumTAT / n<<endl;
 
     return 0;
 }
-
-
-
 
 /*
 Enter number of processes: 4
